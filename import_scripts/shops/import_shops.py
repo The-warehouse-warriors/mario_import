@@ -1,9 +1,11 @@
 import mysql.connector
+from datetime import datetime
+import re
 
 mydb = mysql.connector.connect(
     host="localhost",
     user="admin",
-    password="RBNYFT9o34fgCh0r6",
+    password="<nope>",
     database="marios_pizza"
 )
 addressTable = 'addressinfo'
@@ -16,12 +18,16 @@ def import_store(filename):
     shopFile = open(filename, "r")
     lines = shopFile.readlines()
 
-    # Create string array 
+    # Create string array
     shopInfo = ["" for x in range(7)]
     i = 0
 
     # loop trough lines
     for line in lines:
+
+        # Check if line start with --
+        if bool(re.match("^-{2}", line)):
+            continue
 
         # Check if line is empty
         if not line.strip():
@@ -30,7 +36,7 @@ def import_store(filename):
             continue
 
         # Set line in info, remove nextline and trailing whitespace
-        shopInfo[i] = line.strip('\n').strip() 
+        shopInfo[i] = line.strip('\n').strip()
         i += 1
 
 
@@ -52,13 +58,14 @@ def handleReccords(shopInfo):
 # Check of shop/address exists
 def checkShopExists(shopInfo):
     print("--- Check shop ---")
-    query = "SELECT * FROM {shopTable} LEFT JOIN {addressTable} a on shop.AddressInfo_ID = a.ID WHERE Name = '{name}' AND Street = '{street}' AND Number = '{number}' AND PostalCode = '{Postcode}'".format(
-        shopTable=shopTable,
-        addressTable=addressTable,
-        name=shopInfo[0],
-        street=shopInfo[1],
-        number=shopInfo[2],
-        Postcode=shopInfo[5].replace(" ", "")
+
+    query = "SELECT * FROM {ShopTable} WHERE name = '{Name}' AND StreetName = '{StreetName}' AND HouseNumber = '{HouseNumber}' AND Zipcode = '{Zipcode}'".format(
+        ShopTable=shopTable,
+        Name=shopInfo[0],
+        StreetName=shopInfo[1],
+        HouseNumber=shopInfo[2],
+        # Remove spaces, to uppercase
+        Zipcode=shopInfo[5].replace(" ", "").upper()
     )
 
     mycursor = mydb.cursor()
@@ -75,7 +82,11 @@ def checkShopExists(shopInfo):
 
 
 def addShop(shopInfo):
+
+    dtNow = datetime.now()
+
     print("--- Adding shop ---")
+    print(dtNow.strftime("%Y-%m-%d %H:%M:%S"))
     print('Naam: ' + shopInfo[0])
     print('Straat: ' + shopInfo[1])
     print('Nummer: ' + shopInfo[2])
@@ -84,23 +95,25 @@ def addShop(shopInfo):
     print('Postcode: ' + shopInfo[5].replace(" ", ""))
     print('Telefoon: ' + shopInfo[6])
 
-    # Insert address first
+    sql = "INSERT INTO shop (Name, Phone, Email ,StreetName, HouseNumber, Zipcode, City, CreatedOn, CreatedBy, LastUpdate, UpdateBy) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    val = (
+        shopInfo[0],
+        shopInfo[6],
+        "",  # Email not given
+        shopInfo[1],
+        shopInfo[2],
+        shopInfo[5].replace(" ", "").upper(),  # Remove spaces, to uppercase
+        shopInfo[3],
+        dtNow.strftime("%Y-%m-%d %H:%M:%S"),
+        "System - import",
+        dtNow.strftime("%Y-%m-%d %H:%M:%S"),
+        "System - import"
+    )
     mycursor = mydb.cursor()
-    sql = "INSERT INTO addressinfo (Street, Number, PostalCode, City) VALUES(%s, %s, %s, %s)"
-    val = (shopInfo[1], shopInfo[2], shopInfo[5].replace(" ", ""), shopInfo[4])
     mycursor.execute(sql, val)
     mydb.commit()
-
-    print("1 addressinfo inserted, ID:", mycursor.lastrowid)
-
-    # Add shop with Adress ID
-    sql = "INSERT INTO shop (Name, Phone, AddressInfo_ID) VALUES(%s, %s, %s)"
-    val = (shopInfo[0], shopInfo[6], mycursor.lastrowid)
-    mycursor.execute(sql, val)
-    mydb.commit()
-
-    print("1 shop inserted, ID:", mycursor.lastrowid)
-    
+    print("shop inserted, ID:", mycursor.lastrowid)
+    print("\n")
 
 
 if __name__ == '__main__':
