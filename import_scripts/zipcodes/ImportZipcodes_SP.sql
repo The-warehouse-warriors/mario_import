@@ -7,10 +7,13 @@ CREATE PROCEDURE ImportZipcodes(
     IN inBreakpointEnd varchar(6),
     IN inCityName varchar(45),
     IN inStreetName varchar(75),
-    IN inMunicipalityId int
+    IN inMunicipalityId int,
+    INOUT state varchar(255)
 
 )
 BEGIN
+    set state = 'start';
+
     /* Check if city exists in DB, if not create */
     SET @city_id = (SELECT id FROM city WHERE Name = inCityName);
     IF (@city_id IS NULL) THEN
@@ -23,8 +26,11 @@ BEGIN
                NOW(),
                'System - import'
         );
+
         SELECT last_insert_id() INTO @city_id;
     END IF;
+
+    set state = 'city created';
 
     /* Check if Street exists in DB, if not create */
     SET @street_id = (SELECT id FROM street WHERE Name = inStreetName);
@@ -40,6 +46,8 @@ BEGIN
         );
         SELECT last_insert_id() INTO @street_id;
     END IF;
+
+      set state = 'street created';
 
     /* Check if servicearea exists in DB, if not create */
     SET @servicearea_id = (SELECT id FROM servicearea WHERE Zipcode = inZipcode);
@@ -57,7 +65,7 @@ BEGIN
         );
     END IF;
 
+    set state = 'done';
+
 END $$;
 DELIMITER ;
-
-

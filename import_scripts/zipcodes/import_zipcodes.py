@@ -5,7 +5,7 @@ from datetime import datetime
 mydb = mysql.connector.connect(
     host="localhost",
     user="admin",
-    password="RBNYFT9o34fgCh0r6",
+    password="<nope>",
     database="marios_pizza"
 )
 SQLCityTable = "city"
@@ -67,29 +67,34 @@ def handleZipcodes(filename):
             r'Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=' + filename + ';')
         cursor = conn.cursor()
 
-        query = "SELECT * FROM {Zipcode} ".format(
+        query = "SELECT * FROM {Zipcode}".format(
             Zipcode=AccessZipcodeTable
         )
 
         cursor.execute(query)
+        i = 0
         for row in cursor.fetchall():
+            i = i + 1
             zipcode = row[0].replace(" ", "").upper()
-            breakpointStart = row[2]
-            breakpointEnd = row[3]
-            city = row[4]
-            street = row[5]
+            breakpointStart = str(row[2])
+            breakpointEnd = str(row[3])
+            city = str(row[4])
+            street = str(row[5])
             municipalityId = row[6]
+
+            print("- "+str(i))
 
             # Call SP to insert
             addZipcode(
-                zipcode, 
-                breakpointStart, 
+                zipcode,
+                breakpointStart,
                 breakpointEnd,
-                city, 
-                street, 
+                city,
+                street,
                 municipalityId
             )
 
+        print("Handled items : " + str(i))
         print("-- Done import Municipality\n")
 
     except pyodbc.Error:
@@ -98,7 +103,7 @@ def handleZipcodes(filename):
         print(err)
 
 
-# SQL Insert functions
+## SQL Insert functions
 
 # Insert into SQL DB
 def addMunicipality(id, name):
@@ -123,20 +128,23 @@ def addMunicipality(id, name):
 
 
 def addZipcode(zipcode, breakpointStart, breakpointEnd, city, street, municipalityId):
-    print("- Insert: " + zipcode)
-    
+    #print("- Insert: " + zipcode)
+
     try:
         mycursor = mydb.cursor()
         args = [
             zipcode,
             breakpointStart,
             breakpointEnd,
-            city, 
+            city.replace("'", ""),
             street,
-            municipalityId
+            municipalityId,
+            ''
         ]
         result = mycursor.callproc('ImportZipcodes', args)
-        print(result)
+        mydb.commit()
+        print(result[6])
+
     except pyodbc.Error as e:
         print(e)
 
