@@ -8,11 +8,12 @@ mydb = mysql.connector.connect(
     password="<nope>",
     database="marios_pizza"
 )
-addressTable = 'addressinfo'
 shopTable = 'shop'
 
 
-def import_store(filename):
+def importStore(filename):
+
+    print("--- Open file ---")
 
     # Get all line from file
     shopFile = open(filename, "r")
@@ -51,7 +52,6 @@ def handleReccords(shopInfo):
 
     # check if shop exists
     if not checkShopExists(shopInfo):
-        # NOT: Add shop
         addShop(shopInfo)
 
 
@@ -74,10 +74,10 @@ def checkShopExists(shopInfo):
 
     # Print result
     if len(result) == 0:
-        print('No shop found')
+        print('- No shop found')
         return False
     else:
-        print('shop found')
+        print('- Shop found')
         return True
 
 
@@ -112,10 +112,10 @@ def addShop(shopInfo):
     mycursor = mydb.cursor()
     mycursor.execute(sql, val)
     mydb.commit()
-    print("shop inserted, ID:", mycursor.lastrowid)
+    print("- Shop inserted, ID:", mycursor.lastrowid)
     print("\n")
 
 
 if __name__ == '__main__':
     print("--- Start importer ---\n")
-    import_store('Winkels Mario.txt')
+    importStore('Winkels Mario.txt')
