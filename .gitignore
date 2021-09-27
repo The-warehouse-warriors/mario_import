@@ -4,3 +4,7 @@
 *.ldb
 
 *.mdb
+
+import_scripts/Ingredienten/.idea/
+
+import_scripts/shops/.idea/
