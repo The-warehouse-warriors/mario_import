@@ -8,7 +8,6 @@ CREATE PROCEDURE ImportZipcodes(
     IN inCityName varchar(45),
     IN inStreetName varchar(75),
     IN inMunicipalityId int
-
 )
 BEGIN
     /* Check if city exists in DB, if not create */
@@ -23,6 +22,7 @@ BEGIN
                NOW(),
                'System - import'
         );
+
         SELECT last_insert_id() INTO @city_id;
     END IF;
 
@@ -59,5 +59,3 @@ BEGIN
 
 END $$;
 DELIMITER ;
-
-
