@@ -17,7 +17,7 @@ AccessZipcodeTable = "POSTCODES"
 def importFile(filename):
     print("--- Open database  ---")
 
-    # handleMunicipality(filename)
+    handleMunicipality(filename)
     handleZipcodes(filename)
 
 # Municipality table
@@ -138,12 +138,11 @@ def addZipcode(zipcode, breakpointStart, breakpointEnd, city, street, municipali
             breakpointEnd,
             city.replace("'", ""),
             street,
-            municipalityId,
-            ''
+            municipalityId
         ]
         result = mycursor.callproc('ImportZipcodes', args)
         mydb.commit()
-        print(result[6])
+        print(result)
 
     except pyodbc.Error as e:
         print(e)
