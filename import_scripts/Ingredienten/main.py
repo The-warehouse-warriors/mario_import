@@ -8,7 +8,7 @@ try:
     mariosDB = msql.connect(
         host="localhost",
         user="root",
-        password="HvG5217405",
+        password="-",
         database="marios_pizza")
 
     table = 'ingredienten'
@@ -27,7 +27,6 @@ except Error as e:
     print('--- Error while connecting to database ---', e)
 
 #   Bij grote bestanden kan er ook gebruik worden gemaakt van een class. Voor de ingredienten is dit misschien niet nodig
-
 class Ingredient:
     def __init__(self, name, price):
         self.name = name
@@ -56,7 +55,7 @@ def CheckIngredientExists(ingredient):
     result = cursor.fetchall()
 
     if len(result) == 0:
-        print(ingredient, " ingredient")
+        print(ingredient, " does not exists in database")
         return False
     else:
         print("Ingredient", ingredient, "already exsists")
@@ -94,16 +93,17 @@ def IngredientImport():
 
         Check = CheckIngredientExists(name1)
 
-    
-
-        sql = "INSERT INTO ingredient (Name, Price, Tax_ID, CreatedOn, CreatedBy, LastUpdate, UpdateBy ) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        val = (name1, price1, 1, timeStamp, user, timeStamp, user)
-        cursor.execute(sql, val)
-
-        mariosDB.commit()
-        logInsert = "{} time {} is inserted"
-        log.append(logInsert.format(cursor.rowcount, name1))
-        i+=1
+        if Check == True:
+            i+=1
+            continue
+        else:
+            sql = "INSERT INTO ingredient (Name, Price, Tax_ID, CreatedOn, CreatedBy, LastUpdate, UpdateBy ) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            val = (name1, price1, 1, timeStamp, user, timeStamp, user)
+            cursor.execute(sql, val)
+            mariosDB.commit()
+            logInsert = "{} time {} is inserted"
+            log.append(logInsert.format(cursor.rowcount, name1))
+            i+=1
 
 if __name__ == '__main__':
     TaxImport()
