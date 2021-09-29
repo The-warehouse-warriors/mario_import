@@ -8,7 +8,7 @@ Import code for mario pizza's
 
 Import all shop data from given text file.
 
-run: `python .\import_scripts\shops\import_shops.py`
+run: `python .\import_scripts\shops\import_shops.py "<FILE NAME>"`
 
 ## Dependencies
 Install mysql-connector-python:
