@@ -19,7 +19,7 @@ Install mysql-connector-python:
 
 Import all zip codes, street names, cities and municipalities
 
-run: `python .\import_scripts\ziptcodes\import_zipcodes.py`
+run: `python .\import_scripts\ziptcodes\import_zipcodes.py ".\Postcode_tabel.mdb"`
 
 ## Dependencies
 Install pyodbc:
