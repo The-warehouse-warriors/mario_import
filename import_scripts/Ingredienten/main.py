@@ -9,7 +9,7 @@ try:
     mariosDB = msql.connect(
         host="localhost",
         user="root",
-        password="HvG5217405",
+        password="",
         database="marios_pizza")
 
     table = 'ingredienten'
