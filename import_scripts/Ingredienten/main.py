@@ -1,3 +1,4 @@
+import sys
 import mysql.connector as msql
 from mysql.connector import Error
 import datetime
@@ -8,7 +9,7 @@ try:
     mariosDB = msql.connect(
         host="localhost",
         user="root",
-        password="-",
+        password="HvG5217405",
         database="marios_pizza")
 
     table = 'ingredienten'
@@ -49,6 +50,7 @@ def removeCharInPrice(text):
         else:
             for ch in charactersToRemove:
                 text = text.replace(ch, "")
+           # text = float(text)
     return text
 
 
@@ -82,14 +84,14 @@ def TaxImport():
     print("tax inserted")
 
 
-def IngredientImport():
+def IngredientImport(file):
     # start tijd word bepaald
     starttime=datetime.datetime.now()
 
-    print("-- Start inport --")
+    print("-- Start inport ingredients--")
 
     # data word geïmporteerd naar een array.
-    df = pd.read_csv (r'C:\Users\harmv\OneDrive\Bureaublad\Extra Ingredienten.csv')
+    df = pd.read_csv (file)
     arrayData = df.values
     arrayLen = len(arrayData)
 
@@ -104,8 +106,8 @@ def IngredientImport():
         if cleanprice == False:
             logInsert = "Insert {} skipt because of wrong value in price. ({})"
             skiplog.append(logInsert.format(i + 1, rawprice))
+            i += 1
             continue
-            i+=1
 
         cleanprice = float(cleanprice)
         cleanname = removeCharInName(rawname)
@@ -118,39 +120,29 @@ def IngredientImport():
             skiplog.append(logInsert.format(i + 1, cleanname, cleanprice))
             i+=1
             continue
-        else:
-            sql = "INSERT INTO ingredient (Name, Price, Tax_ID, CreatedOn, CreatedBy, LastUpdate, UpdateBy ) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-            val = (cleanname, cleanprice, 1, timeStamp, user, timeStamp, user)
-            cursor.execute(sql, val)
-            mariosDB.commit()
-            logInsert = "input: {} with name: {} and price: €{} is inserted"
-            insertlog.append(logInsert.format(i+1, cleanname, cleanprice))
-            i+=1
+
+        sql = "INSERT INTO ingredient (Name, Price, Tax_ID, CreatedOn, CreatedBy, LastUpdate, UpdateBy ) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        val = (cleanname, cleanprice, 1, timeStamp, user, timeStamp, user)
+        cursor.execute(sql, val)
+        mariosDB.commit()
+        logInsert = "input: {} with name: {} and price: €{} is inserted"
+        insertlog.append(logInsert.format(i+1, cleanname, cleanprice))
+        i+=1
+
     # stelt de eind tijd van de inport vast
     endtime = datetime.datetime.now()
     processtime = endtime-starttime
-    print("-- End inport --")
+    print("-- End inport ingredients--")
     print("")
     print("Total time consumed: ", processtime)
 
 if __name__ == '__main__':
-    testprijs = "$1.50,-"
-    check = removeCharInPrice(testprijs)
-    if check == False:
-        logInsert = "Insert test skipt because of wrong value in price. ({})"
-        skiplog.append(logInsert.format(testprijs))
-    else:
-        logInsert = "testprijs is door gekomen. ({})"
-        insertlog.append(logInsert.format(testprijs))
 
-    TaxImport()
-    print(" ")
-    IngredientImport()
-    print("")
-    print("insertlog:")
-    for i in insertlog:
-        print(i)
-    print("")
-    print("skiplog:")
-    for x in skiplog:
-        print(x)
+    if len(sys.argv) < 2:
+        print('Missing argument!')
+        exit()
+
+    print('file: ' + sys.argv[1])
+    filename = sys.argv[1]
+
+    IngredientImport(filename)
