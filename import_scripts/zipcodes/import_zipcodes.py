@@ -214,5 +214,6 @@ if __name__ == '__main__':
         print('Missing argument!')
         exit()
 
+    print('file: ' + sys.argv[1])
     filename = sys.argv[1]    
     importFile(filename)
