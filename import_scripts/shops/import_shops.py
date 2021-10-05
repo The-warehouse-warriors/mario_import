@@ -1,14 +1,23 @@
 import mysql.connector
 from datetime import datetime
 import re
+import sys
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="admin",
-    password="<nope>",
-    database="marios_pizza"
-)
+
 shopTable = 'shop'
+
+def createDbConnector():
+    try:
+        global mydb
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="admin",
+            password="<nope>",
+            database="marios_pizza"
+        )
+    except:
+        print("MySQL error!")
+        exit()
 
 
 def importStore(filename):
@@ -115,7 +124,14 @@ def addShop(shopInfo):
     print("- Shop inserted, ID:", mycursor.lastrowid)
     print("\n")
 
-
 if __name__ == '__main__':
     print("--- Start importer ---\n")
-    importStore('Winkels Mario.txt')
+    createDbConnector()
+     
+    if len(sys.argv) < 2:
+        print('Missing argument!')
+        exit()
+
+    print('file: ' + sys.argv[1])
+    filename = sys.argv[1]    
+    importStore(filename)

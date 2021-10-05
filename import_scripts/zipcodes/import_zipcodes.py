@@ -1,17 +1,25 @@
 import mysql.connector
 import pyodbc
 from datetime import datetime
+import sys
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="admin",
-    password="<nope>",
-    database="marios_pizza"
-)
 SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 AccessMunicipalityTable = "GEMEENTEN"
 AccessZipcodeTable = "POSTCODES"
+
+def createDbConnector():
+    try:
+        global mydb
+        mydb = mysql.connector.connect(
+            host="localhost",
+            user="admin",
+            password="<nope>",
+            database="marios_pizza"
+        )
+    except:
+        print("MySQL error!")
+        exit()
 
 
 def importFile(filename):
@@ -197,4 +205,15 @@ def checkCityExists(name):
 
 if __name__ == '__main__':
     print("--- Start importer ---\n")
-    importFile('.\Postcode_tabel.mdb')
+
+    # Check/create Mysql connector
+    createDbConnector()
+
+    # Check given params
+    if len(sys.argv) < 2:
+        print('Missing argument!')
+        exit()
+
+    print('file: ' + sys.argv[1])
+    filename = sys.argv[1]    
+    importFile(filename)
