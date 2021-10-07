@@ -1,5 +1,6 @@
 import pandas as pd
 import mysql.connector
+# import pymysql
 from openpyxl import load_workbook
 
 df = pd.read_excel('pizzabodems.xlsx')
@@ -11,11 +12,12 @@ def createDbConnector():
     try:
         global mydb
         mydb = mysql.connector.connect(
-            host="localhost",
-            port="330",
-            user="root",
-            password="televisie",
-            database="marios_pizza"
+        # mydb = pymysql.connect(
+            host='localhost',
+            port='330',
+            user='root',
+            password='televisie',
+            database='marios_pizza'
         )
         global cursor
         cursor = mydb.cursor()
@@ -32,16 +34,17 @@ def createTable():
         createTable()
 
 def fillTable():
+    cols = "`,`".join([str(i) for i in df.columns.tolist()])
     try:
-        for (row,rs) in df.itterrows():
-            naam = rs[0]
-            diameter = rs[1]
-            omschrijving = rs[2]
-            toeslag = rs[3]
-            beschikbaar = rs[4]
-            query = "insert into " + table + "(naam, diameter, omschrijving, toeslag, beschikbaar) values (%s, %s, %s, %s, %s)"
-            val = (naam, diameter, omschrijving, toeslag, beschikbaar)
-            cursor.execute(query, val)
+        for (i,row) in df.itterrows():
+            # naam = rs[0]
+            # diameter = rs[1]
+            # omschrijving = rs[2]
+            # toeslag = rs[3]
+            # beschikbaar = rs[4]
+            query = "insert into '" + table + "'('" + cols + "') values (" + "%s,"*(len(row)-1) + "%s)"
+            # val = (naam, diameter, omschrijving, toeslag, beschikbaar)
+            cursor.execute(query, tuple(row))
             mydb.commit()
             print("Filled table: " + table)
     except:
