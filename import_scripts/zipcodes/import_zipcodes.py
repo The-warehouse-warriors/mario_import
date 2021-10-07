@@ -7,6 +7,7 @@ SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 AccessMunicipalityTable = "GEMEENTEN"
 AccessZipcodeTable = "POSTCODES"
+logFile = './logs/zipcode_log.txt'
 
 def createDbConnector():
     try:
@@ -18,21 +19,18 @@ def createDbConnector():
             database="marios_pizza"
         )
     except:
-        print("MySQL error!")
+        log("!! MySQL error!")
         exit()
 
 
 def importFile(filename):
-    print("--- Open database  ---")
-
+    log("Open database")
     handleMunicipality(filename)
     handleZipcodes(filename)
 
 # Municipality table
-
-
 def handleMunicipality(filename):
-    print("--- Import Municipality table ---")
+    log("- Import Municipality table")
 
     try:
         conn = pyodbc.connect(
@@ -49,26 +47,26 @@ def handleMunicipality(filename):
             name = row[1].upper()
 
             if id == '':
-                print('No ID given')
+                log('! No ID given')
                 continue
 
             if name == '':
-                print("No name given")
+                log("! No name given")
                 continue
 
             # check if municipality exists
             if not checkMunicipalityExists(id, name):
                 addMunicipality(id, name)
 
-        print("-- Done import Municipality\n")
+        log("Done import Municipality")
 
     except pyodbc.Error:
-        print("ERROR: Cant find/open Access file")
+        log("!! ERROR: Cant find/open Access file")
 
 
 # Zipcode Table
 def handleZipcodes(filename):
-    print("--- Import Zipcodes table ---")
+    log("- Import Zipcodes table")
 
     try:
         conn = pyodbc.connect(
@@ -90,7 +88,7 @@ def handleZipcodes(filename):
             street = str(row[5])
             municipalityId = row[6]
 
-            print("- "+str(i))
+            log("- "+str(i))
 
             # Call SP to insert
             addZipcode(
@@ -102,20 +100,20 @@ def handleZipcodes(filename):
                 municipalityId
             )
 
-        print("Handled items : " + str(i))
-        print("-- Done import Municipality\n")
+        log("Handled items : " + str(i))
+        log("Done import Municipality\n")
 
     except pyodbc.Error:
-        print("ERROR: Cant find/open Access file")
+        log("!! ERROR: Cant find/open Access file")
     except pyodbc.DatabaseError as err:
-        print(err)
+        log(err)
 
 
 ## SQL Insert functions
 
 # Insert into SQL DB
 def addMunicipality(id, name):
-    print("- Insert: " + str(id) + " - " + name)
+    log("Insert: " + str(id) + " - " + name)
     dtNow = datetime.now()
 
     sql = "INSERT INTO municipality (ID, Name, CreatedOn, CreatedBy, LastUpdate, UpdateBy) VALUES (%s,%s,%s,%s,%s,%s)"
@@ -130,7 +128,7 @@ def addMunicipality(id, name):
     mycursor = mydb.cursor()
     mycursor.execute(sql, val)
     mydb.commit()
-    print("- Municipality inserted, ID:", mycursor.lastrowid)
+    log("Municipality inserted, ID:", mycursor.lastrowid)
 
 # Insert data with Stored procedure
 
@@ -150,17 +148,16 @@ def addZipcode(zipcode, breakpointStart, breakpointEnd, city, street, municipali
         ]
         result = mycursor.callproc('ImportZipcodes', args)
         mydb.commit()
-        print(result)
 
     except pyodbc.Error as e:
-        print(e)
+        log(e)
 
 
 # Item Exists check functions
 
 # Municipality
 def checkMunicipalityExists(id, name):
-    print("--- Check Municipality ---")
+    log("Check Municipality")
 
     query = "SELECT * FROM {Table} WHERE ID = '{Id}' OR Name = '{Name}'".format(
         Table=SQLMunicipalityTable,
@@ -172,18 +169,18 @@ def checkMunicipalityExists(id, name):
     mycursor.execute(query)
     result = mycursor.fetchall()
 
-    # Print result
+    # log result
     if len(result) == 0:
-        print('- No Municipality found')
+        log("No Municipality found")
         return False
     else:
-        print('- Municipality found')
+        log("Municipality found")
         return True
 
 
 # City
 def checkCityExists(name):
-    print("--- Check City ---")
+    log("Check City")
 
     query = "SELECT * FROM {Table} WHERE Name = '{Name}'".format(
         Table=SQLCityTable,
@@ -194,26 +191,31 @@ def checkCityExists(name):
     mycursor.execute(query)
     result = mycursor.fetchall()
 
-    # Print result
+    # log result
     if len(result) == 0:
-        print('- No City found')
+        log("No City found")
         return False
     else:
-        print('- City found')
+        log("City found")
         return True
 
 
+def log(text):
+    print(text)
+    dtnow = datetime.now()
+    with open(logFile, 'a') as logger:
+        logger.write(str(dtnow) + ') ' + text + '\n')
+
 if __name__ == '__main__':
-    print("--- Start importer ---\n")
+    log("--- Start importer ---")
 
     # Check/create Mysql connector
     createDbConnector()
 
     # Check given params
     if len(sys.argv) < 2:
-        print('Missing argument!')
+        log("!! Missing argument !!")
         exit()
 
-    print('file: ' + sys.argv[1])
     filename = sys.argv[1]    
     importFile(filename)

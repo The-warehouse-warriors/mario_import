@@ -1,3 +1,5 @@
+-- Call single SP per row in Temp Zipcodes
+
 DROP PROCEDURE IF EXISTS ImportTempZipcodes;
 
 DELIMITER $$

@@ -10,6 +10,9 @@ CREATE PROCEDURE ImportZipcodes(
     IN inMunicipalityId int
 )
 BEGIN
+
+    SET FOREIGN_KEY_CHECKS = 0;
+
     /* Check if city exists in DB, if not create */
     SET @city_id = (SELECT id FROM city WHERE Name = inCityName);
     IF (@city_id IS NULL) THEN
@@ -56,6 +59,8 @@ BEGIN
             'System - import'
         );
     END IF;
+
+    SET FOREIGN_KEY_CHECKS = 1;
 
 END $$;
 DELIMITER ;

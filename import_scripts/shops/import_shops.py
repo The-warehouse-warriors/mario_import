@@ -3,8 +3,8 @@ from datetime import datetime
 import re
 import sys
 
-
 shopTable = 'shop'
+logFile = './logs/shops_log.txt'
 
 def createDbConnector():
     try:
@@ -16,13 +16,12 @@ def createDbConnector():
             database="marios_pizza"
         )
     except:
-        print("MySQL error!")
+        log("! MySQL error !")
         exit()
-
 
 def importStore(filename):
 
-    print("--- Open file ---")
+    log("Open file")
 
     # Get all line from file
     shopFile = open(filename, "r")
@@ -56,8 +55,8 @@ def handleReccords(shopInfo):
     if shopInfo[0] == '':
         return
 
-    print("--- Handle Reccord--")
-    print('Naam: ' + shopInfo[0])
+    log("- Handle Reccord")
+    log("Naam: " + shopInfo[0])
 
     # check if shop exists
     if not checkShopExists(shopInfo):
@@ -66,7 +65,7 @@ def handleReccords(shopInfo):
 
 # Check of shop/address exists
 def checkShopExists(shopInfo):
-    print("--- Check shop ---")
+    log("Check shop")
 
     query = "SELECT * FROM {ShopTable} WHERE name = '{Name}' AND StreetName = '{StreetName}' AND HouseNumber = '{HouseNumber}' AND Zipcode = '{Zipcode}'".format(
         ShopTable=shopTable,
@@ -81,29 +80,19 @@ def checkShopExists(shopInfo):
     mycursor.execute(query)
     result = mycursor.fetchall()
 
-    # Print result
+    # Log result
     if len(result) == 0:
-        print('- No shop found')
+        log("No shop found")
         return False
     else:
-        print('- Shop found')
+        log("Shop found")
         return True
 
 
 def addShop(shopInfo):
-
+    log("Adding shop")
     dtNow = datetime.now()
-
-    print("--- Adding shop ---")
-    print(dtNow.strftime("%Y-%m-%d %H:%M:%S"))
-    print('Naam: ' + shopInfo[0])
-    print('Straat: ' + shopInfo[1])
-    print('Nummer: ' + shopInfo[2])
-    print('Stad: ' + shopInfo[3])
-    print('Land: ' + shopInfo[4])
-    print('Postcode: ' + shopInfo[5].replace(" ", ""))
-    print('Telefoon: ' + shopInfo[6])
-
+   
     sql = "INSERT INTO shop (Name, Phone, Email ,StreetName, HouseNumber, Zipcode, City, CreatedOn, CreatedBy, LastUpdate, UpdateBy) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     val = (
         shopInfo[0],
@@ -121,17 +110,22 @@ def addShop(shopInfo):
     mycursor = mydb.cursor()
     mycursor.execute(sql, val)
     mydb.commit()
-    print("- Shop inserted, ID:", mycursor.lastrowid)
-    print("\n")
+    log("Shop inserted, ID:", mycursor.lastrowid)
+
+def log(text):
+    print(text)
+    dtnow = datetime.now()
+    with open(logFile, 'a') as logger:
+        logger.write(str(dtnow) + ') ' + text + '\n')
 
 if __name__ == '__main__':
-    print("--- Start importer ---\n")
+    log("--- Start importer ---")
+    
     createDbConnector()
-     
+
     if len(sys.argv) < 2:
-        print('Missing argument!')
+        log('!! Missing argument!')
         exit()
 
-    print('file: ' + sys.argv[1])
-    filename = sys.argv[1]    
+    filename = sys.argv[1]
     importStore(filename)
