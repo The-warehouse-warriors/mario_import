@@ -1,5 +1,54 @@
  SELECT * FROM new_schema.marioorderdata01;
 
+
+
+
+
+
+# Select data from customer who ordered multiple times with multiple products
+ SELECT *
+	FROM new_schema.marioorderdata01
+    WHERE TelefoonNr = '06-36558570' 
+    GROUP BY Email, Besteldatum;
+
+# Store unique customer and order date
+#CALL delete_table_exists('unique_customer_email_and_order_date');
+DROP TEMPORARY TABLE unique_customer_email_and_order_date;
+CREATE TEMPORARY TABLE unique_customer_email_and_order_date
+SELECT *
+	FROM new_schema.marioorderdata01
+    WHERE TelefoonNr = '06-36558570' ;
+
+
+
+
+
+# show selected data
+SELECT *
+	FROM unique_customer_email_and_order_date;
+
+# select order with order items
+SELECT *
+	FROM new_schema.marioorderdata01
+    WHERE Besteldatum = 'zaterdag 12 mei 2018' AND Email = 'AdelinaPoortvliet@dayrep.com' 
+    ;
+
+SELECT DISTINCT Besteldatum
+	FROM 
+
+# Selecting all ID's from 1 customer of 1 order that consists from 1 or more products
+SELECT *
+	FROM new_schema.marioorderdata01 t
+    WHERE ID in
+			( SELECT ID
+				FROM new_schema.marioorderdata01
+				WHERE Besteldatum = 'zaterdag 12 mei 2018' AND Email = 'AdelinaPoortvliet@dayrep.com' 
+            );
+
+ SELECT *
+	FROM new_schema.marioorderdata01
+    GROUP BY Email, Besteldatum;
+
 # Source:
 # ID, Winkelnaam, Klantnaam, TelefoonNr, Email, Adres, Woonplaats, Besteldatum, AfleverType, AfleverDatum, AfleverMoment, Product, PizzaBodem, PizzaSaus, Prijs, Bezorgkosten, Aantal, Extra IngrediÃ«nten, Prijs Extra IngrediÃ«nten, Regelprijs, Totaalprijs, Gebruikte Coupon, Coupon Korting, Te Betalen
 # '0', 'Middelburg', 'Johny ten Brinke', '06-25480284', 'JohnytenBrinke@armyspy.com', 'Hooge Meestraat 88', 'Middelburg', 'woensdag 5 juni 2019', 'Bezorgen', 'woensdag 5 juni 2019', '20:05', 'Creamy Bacon', 'Family XXL Pizza', 'Creme Fraiche', '€ 7,95', '€ 2,00', '2', '', '€ 0,00', '€ 29,90', '€ 73,70', '', '€ 0,00', '€ 73,70\r'

@@ -1,0 +1,1162 @@
+-- Let op: Dit is overzicht van alle winkels van Mario, ingetyped door een medewerker
+--  Er kunnen dus (opmaak)fouten in postcodes/straten zitten of inconsistenties!
+
+Amsterdam Aalsmeerweg
+Aalsmeerweg 
+14
+Amsterdam 
+NL 
+1059NJ
+0204122131
+
+Amsterdam Bos en Lommerweg
+Bos en Lommerweg 
+215
+AMSTERDAM 
+NL 
+1055DT
+0206847676
+
+Amsterdam Ceintuurbaan
+Ceintuurbaan 
+314
+AMSTERDAM 
+NL 
+1072GL
+0204705292
+
+Amsterdam Noord
+Kamperfoelieweg 
+40
+AMSTERDAM 
+NL 
+1032HP
+0203340008
+
+Amsterdam Oostelijke Handelskade
+Oostelijke Handelskade 
+142
+AMSTERDAM 
+NL 
+1019BP
+0204350660
+
+Amsterdam Overtoom
+Overtoom 
+71
+AMSTERDAM 
+NL 
+1054HC
+0204122131
+
+Osdorp
+Pieter Calandlaan 
+212 e
+Osdorp 
+NL 
+1069LA
+0206673880 
+
+Den Haag Goudenregenplein
+Goudenregenplein 
+3
+DEN HAAG 
+NL
+2565GH
+0703616111
+
+Den Haag Oude Haagweg
+Oude Haagweg 
+36
+DEN HAAG 
+NL 
+2552EP
+0704400020
+
+Den Haag Torenstraat
+Torenstraat 
+140
+DEN HAAG 
+NL 
+2513BW
+0703467757
+
+Scheveningen
+Zeesluisweg 
+6
+Scheveningen 
+NL 
+2583DR
+0703060022
+
+Assen
+Troelstralaan 
+199 A
+ASSEN 
+NL 
+9402BG
+0592350060
+
+Emmen
+Spoorstraat 
+6
+EMMEN 
+NL 
+7811GC
+0591724400
+
+Meppel
+Prinsengracht 
+13
+Meppel 
+NL 
+7941KD
+0522743110 
+
+Almere
+Cinemadreef 
+238
+ALMERE 
+NL 
+1325ES
+0365359494
+
+Almere Buiten
+Makassarweg 
+209
+ALMERE BUITEN 
+NL 
+1335HW
+0365213990
+
+Lelystad
+Weverstraat 
+26
+LELYSTAD 
+NL 
+8223AC
+0320213018 
+
+Drachten
+Noordkade 
+56
+DRACHTEN 
+NL 
+9203CE
+0512510015
+
+Heerenveen
+Trambaan 
+11
+HEERENVEEN 
+NL 
+8441BH
+0513625635
+
+Leeuwarden
+Oostergrachtswal 
+5
+LEEUWARDEN 
+NL 
+8921AA
+0582120026
+
+Sneek
+Gedempte Pol 
+32
+SNEEK 
+NL 
+8601BZ
+0515411045
+
+Apeldoorn
+Arnhemseweg 
+251
+Apeldoorn 
+NL 
+7333NA
+0555761188
+
+Arnhem
+Middelgraaflaan 
+65
+ARNHEM 
+NL 
+6832AP
+0263883993
+
+Arnhem Centrum
+Jansbinnensingel 
+27
+ARNHEM 
+NL 
+6811AL
+0263510100
+
+Ede
+Rozenplein 
+62
+Ede 
+NL 
+6713EN
+0318504100
+
+Harderwijk
+Vondellaan 
+90
+HARDERWIJK 
+NL 
+3842EJ
+0341410010
+
+Nijmegen
+Groenestraat 
+243
+NIJMEGEN 
+NL 
+6531HJ
+0243500670
+
+Tiel
+Plein 
+53
+TIEL 
+NL 
+4001LH
+0344610004
+
+Velp
+Churchillplein 
+71
+VELP 
+NL 
+6883AR
+0263610001
+
+Wageningen
+Stadsbrink 
+34
+WAGENINGEN 
+NL 
+6701AL
+0317410040
+
+Wijchen
+Touwslagersbaan 
+7B
+WIJCHEN 
+NL 
+6602AH
+0242100100
+
+Delfzijl
+De Wending 
+7
+delfzijl 
+NL 
+9933KM
+0596743101
+
+Groningen Boterdiep
+Boterdiep 
+1
+GRONINGEN 
+NL 
+9712LH
+0505266600
+
+Groningen Paddepoel
+Zonnelaan 
+281A
+GRONINGEN 
+NL 
+9742BG
+0505710012
+
+Groningen Paterswoldseweg
+Paterswoldseweg 
+322
+GRONINGEN 
+NL 
+9727BX
+0505250300
+
+Hoogezand
+Gorecht-Oost 
+76
+Hoogezand 
+NL 
+9603 AC
+0598743103 
+
+AC Sevenum
+Kleefdijkseweg 
+29
+Sevenum 
+NL 
+5975NV
+0774672895
+
+Brunssum
+Schiffelerstraat 
+15-17
+Brunssum 
+NL 
+6441CN
+0452100121
+
+Geleen
+Rijksweg Centrum 
+68
+GELEEN 
+NL 
+6161EH
+0462100106
+
+Landgraaf
+Hoogstraat 
+54
+landgraaf 
+NL 
+6373HW
+0452100120
+
+Maastricht
+Koningin Emmaplein 
+18
+Maastricht 
+NL 
+6211NG
+0433216747
+
+Roermond
+Stationsplein 
+14
+ROERMOND 
+NL 
+6041GN
+0475310012
+
+Sittard
+Stationsstraat 
+49
+SITTARD 
+NL 
+6131AX
+0464000143
+
+Venlo
+Koninginnensingel
+80
+VENLO 
+NL 
+5911KG
+0773510000
+
+Weert
+Dries 
+8
+WEERT 
+NL 
+6006HS
+0495520030 
+
+Bergen op Zoom
+Antwerpsestraat
+2
+BERGEN OP ZOOM 
+NL 
+4611AG
+0164247030
+
+Breda Graaf Hendrik III Plein
+Graaf Hendrik III plein 
+51
+BREDA 
+NL 
+4819CK
+0765200345
+
+Breda Kesterenlaan
+Kesterenlaan 
+170
+BREDA 
+NL 
+4822WK
+0765422113
+
+Den Bosch
+Leonardo da Vinciplein 
+44
+Den Bosch 
+NL 
+5223DR
+0736233111
+
+Den Bosch Empel
+Burg.Godschalxstraat 
+42
+DEN BOSCH 
+NL 
+5236AC
+0736444222
+
+Dongen
+Europaplein 
+53
+DONGEN 
+NL 
+5101VW
+0162749101
+
+Eindhoven Gestel
+Karel de Grotelaan 
+351
+Eindhoven 
+NL 
+5654NN
+0402570999
+
+Eindhoven Tongelre
+Dirigentplein 
+97
+EINDHOVEN 
+NL 
+5642RK
+0404100121
+
+Eindhoven Woensel
+Elckerlyclaan 
+77
+EINDHOVEN 
+NL 
+5625EP
+0402483060
+
+Etten Leur
+Markt 
+99b
+ETTEN LEUR 
+NL 
+4875CD
+0765081111
+
+Geldrop
+Dommeldalseweg 
+2b
+GELDROP
+NL 
+5664RP
+0402854087
+
+Helmond
+Noord Koninginnewal 
+23
+HELMOND 
+NL 
+5701NJ
+0492552878
+
+Helmond Brandevoort
+De Plaetse 
+91
+HELMOND 
+NL 
+5708ZK
+0492743013
+
+Oosterhout
+Heuveleind 
+13
+OOSTERHOUT 
+NL 
+4901LL
+0162433838
+
+Oss
+Klaphekkenstraat 
+5a
+OSS
+NL 
+5341CH
+0412-655066
+
+Roosendaal
+Boulevard 
+8
+ROOSENDAAL 
+NL 
+4701EV
+0165565300
+
+Tilburg Laarstraat
+Laarstraat 
+1
+Tilburg 
+NL 
+5025VJ
+0134686866
+
+Tilburg Thomas van Aquinostraat
+Thomas van Aquinostraat 
+37
+TILBURG 
+NL 
+5042HA
+0134637638
+
+Uden
+Oranjestraat 
+19/21
+UDEN 
+NL 
+5401CB
+0413245009
+
+Valkenswaard
+Dommelseweg 
+5
+Valkenswaard 
+NL 
+5554NL
+0404100110
+
+Veghel
+Bolkenplein 
+9/10
+VEGHEL 
+NL 
+5461HH
+0413320403
+
+Veldhoven
+Burgemeester van Hoofflaan 
+67
+VELDHOVEN 
+NL 
+5503BK
+0402556636
+
+Waalwijk
+St. Antoniusstraat 
+138
+WAALWIJK 
+NL 
+5144AG
+0416566088 
+
+Alkmaar
+Vondelstraat 
+61
+ALKMAAR 
+NL 
+1813BA
+0722100160
+
+Amstelveen
+Hueseplein 
+4
+AMSTELVEEN 
+NL 
+1185HH
+0203457666
+
+Den Helder
+Marsdiepstraat 
+172
+DEN HELDER 
+NL 
+1784AT
+0223610040
+
+Diemen
+Burgemeester de Kievietstraat 
+13
+DIEMEN 
+NL 
+1111GJ
+0204162800
+
+Haarlem Tesselschadeplein
+Tesselschadeplein 
+1
+HAARLEM 
+NL 
+2026SV
+0235400555
+
+Haarlem Zuid
+Nice Passage 
+10
+HAARLEM 
+NL 
+2037AJ
+0235404455
+
+Heemskerk
+Bachplein 
+21
+HEEMSKERK 
+NL 
+1962CE
+0251242226
+
+Heerhugowaard
+Raadhuisstraat 
+14
+HEERHUGOWAARD 
+NL 
+1701EK
+0725762940
+
+Hoofddorp
+Almkerkplein 
+2
+HOOFDDORP 
+NL 
+2134DR
+0235620388
+
+Hoorn
+Veemarkt
+45-47
+HOORN 
+NL 
+1621JB
+0229210318
+
+IJmuiden
+Kennemerlaan 
+77
+IJMUIDEN 
+NL 
+1972EJ
+0255545910
+
+Noordwijk
+Kerkstraat 
+40
+NOORDWIJK 
+NL 
+2201KN
+0713610979
+
+Purmerend
+Wormerplein 
+89
+PURMEREND 
+NL 
+1442CD
+0299420009
+
+Zaandam
+Zuiddijk 
+45
+ZAANDAM 
+NL 
+1501CB
+0756705501 
+
+Almelo
+Vincent van Goghplein 
+12
+ALMELO 
+NL 
+7606HP
+0546459996
+
+Deventer
+Brinkgeverweg 
+80-82
+Deventer 
+NL 
+7413AE
+0570621100
+
+Enschede
+Kuipersdijk 
+3B
+ENSCHEDE 
+NL 
+7512CA
+0534824000
+
+Enschede West
+G.J. van Heekstraat 
+223
+ENSCHEDE 
+NL 
+7521EE
+0534300081
+
+Hengelo
+Boekeloseweg 
+11
+HENGELO 
+NL 
+7553DK
+0742420203
+
+Kampen
+Buitennieuwstraat 
+9
+KAMPEN
+NL 
+8261AP
+0383331517
+
+Zwolle
+Diezerkade 
+5
+ZWOLLE 
+NL 
+8021CW
+0384531339
+
+Zwolle Bachplein
+Bachplein 
+8
+ZWOLLE 
+NL 
+8031HR
+0384210080
+
+Rotterdam Hoogvliet
+In de Fuik 
+90
+Rotterdam 
+NL 
+3192HD
+0102160075
+
+Rotterdam Mariniersweg
+Mariniersweg 
+70A
+ROTTERDAM 
+NL 
+3011NS
+0104118070
+
+Rotterdam Noord
+Stadhoudersweg 
+72a
+Rotterdam 
+NL 
+3039CG
+010 4667411
+
+Rotterdam Schiebroek
+Peppelweg 
+93 A
+ROTTERDAM 
+NL 
+3053GE
+0102184703
+
+Rotterdam Vuurplaat
+Vuurplaat 
+328-330
+ROTTERDAM 
+NL 
+3071AR
+0102150370
+
+Rotterdam Zevenkamp
+Zevenkampsering, 
+303 B
+ROTTERDAM 
+NL 
+3068HG
+0102205151
+
+Rotterdam Zuidplein
+Zuidplein 
+117
+Rotterdam 
+NL 
+3083 CN
+010-3100700 
+
+Amersfoort
+Prinses Julianaplein 
+3
+AMERSFOORT 
+NL 
+3811NM
+0334220422
+
+Amersfoort Vathorst
+Wouda 
+11
+AMERSFOORT 
+NL 
+3825MA
+0332588883
+
+Bussum
+De Clinge 
+1
+BUSSUM 
+NL 
+1401EV
+0356914377
+
+De Meern
+Zandweg 
+137
+De Meern 
+NL 
+3453HA
+0306667737
+
+Hilversum
+Havenstraat 
+12
+HILVERSUM 
+NL 
+1211KL
+0356289888
+
+Houten
+Lange Schaft 
+13b
+HOUTEN 
+NL 
+3991AP
+0306390830
+
+Maarssen
+Bisonspoor 
+1190
+MAARSSEN 
+NL 
+3605KX
+0346283008
+
+Nieuwegein
+Nedereindseweg 
+7
+NIEUWEGEIN 
+NL 
+3438AA
+0306072727
+
+Soest
+Steenhoffstraat 
+16
+SOEST 
+NL 
+3764BL
+0356921783
+
+Utrecht Adelaarstraat
+Adelaarstraat 
+69
+UTRECHT 
+NL 
+3514CC
+0302430777
+
+Utrecht Marnixlaan
+Marnixlaan 
+21
+UTRECHT 
+NL 
+3552HB
+0302452170
+
+Utrecht Rijnlaan
+Rijnlaan 
+6a
+UTRECHT 
+NL 
+3522BN
+0302888712
+
+Veenendaal
+Nieuweweg 
+87
+Veenendaal 
+NL 
+3905LH
+0318517055
+
+Woerden
+Leidsestraatweg 
+12
+WOERDEN 
+NL 
+3443BV
+0348411194
+
+Zeist
+Montaubanstraat 
+251
+ZEIST 
+NL 
+3701HN
+0306932266 
+
+Goes
+Zusterstraat 
+7
+GOES 
+NL 
+4461JA
+0113748110
+
+Middelburg
+Pottenbakkerssingel 
+10
+MIDDELBURG 
+NL 
+4331NA
+0118673040
+
+Terneuzen
+Axelsestraat 
+68
+TERNEUZEN 
+NL 
+4537AL
+0115622220
+
+Vlissingen
+Badhuisstraat 
+1
+VLISSINGEN
+NL 
+4381LM
+0118430334 
+
+Alphen aan den Rijn
+Concertweg 
+5
+ALPHEN AAN DEN RIJN 
+NL 
+2402JG
+0172 417 327
+
+Barendrecht
+t Vlak 
+10
+BARENDRECHT
+NL 
+2991EP
+0180439004
+
+Berkel en Rodenrijs
+Wilhelministraat
+14
+BERKEL EN RODENRIJS 
+NL 
+2651DL
+0105110002
+
+Capelle a/d Yssel
+Slotplein 
+22
+Capelle a/d Yssel 
+NL 
+2902HP
+0104502373
+
+Delft Binnenwatersloot
+Binnenwatersloot 
+12a
+Delft 
+NL 
+2611BK
+0152148124
+
+Delft Papsouwselaan
+Papsouwselaan 
+123b
+Delft 
+NL 
+2624AK
+0152855666
+
+Dordrecht Bamendaweg
+Bamendaweg 
+40
+DORDRECHT 
+NL 
+3319GS
+0786219200
+
+Dordrecht Van Oldenbarneveltplein
+Van Oldenbarneveltplein 
+73
+DORDRECHT 
+NL 
+3317ES
+0786515230
+
+Gorinchem
+Kazerneplein 
+21
+GORINCHEM 
+NL 
+4201MB
+0183653070
+
+Gouda
+Van Hogendorpplein 
+21
+GOUDA 
+NL 
+2805BM
+0182551110
+
+Hellevoetsluis
+Westkade 
+45
+HELLEVOETSLUIS 
+NL 
+3221AV
+0181338807
+
+Leiden
+Stationsweg 
+17
+LEIDEN 
+NL 
+2312AS
+0715141428
+
+Leiderdorp
+Laan van Berendrecht 
+11a
+LEIDERDORP
+NL 
+2352VR
+0712100240
+
+Leidschendam
+Damplein 
+16
+LEIDSCHENDAM 
+NL 
+2265AC
+0703275959
+
+Maassluis
+PC Hooftlaan
+8
+MAASSLUIS 
+NL 
+3142GH
+0102540555
+
+Naaldwijk
+s-Gravenzandseweg 
+18
+NAALDWIJK 
+NL 
+2671JN
+0174200000
+
+Nootdorp
+Koningin Julianastraat 
+24
+Nootdorp 
+NL 
+2631BM
+015 3109491
+
+Oud Beijerland
+Beijerse Hof 
+3
+Oud Beijerland 
+NL 
+3262VR
+0186610050
+
+Papendrecht
+P S Gerbrandystraat 
+64
+PAPENDRECHT
+NL 
+3354BW
+0786416666
+
+Ridderkerk
+Irisstraat 
+4
+Ridderkerk 
+NL
+2981BN
+0180497527
+
+Rijswijk
+Generaal Eisenhouwerplein 
+4
+RIJSWIJK 
+NL 
+2284XV
+0703948039
+
+Schiedam
+Oranjestraat 
+7
+SCHIEDAM 
+NL
+3111AM
+0104269414
+
+Spijkenisse
+Gorsstraat 
+16
+SPIJKENISSE 
+NL 
+3201DB
+0181619000
+
+Vlaardingen
+Van Hogendorplaan 
+19a
+VLAARDINGEN 
+NL 
+3135BB
+0104719877
+
+Voorburg
+Koningin Julianalaan 
+234
+VOORBURG 
+NL 
+2274JR
+0703864044
+
+Voorschoten
+Planciusplantsoen 
+26b
+VOORSCHOTEN 
+NL 
+2253TS
+0715762211
+
+Wassenaar
+Oostdorperweg 
+37
+WASSENAAR 
+NL 
+2242NE
+0705115556
+
+Zoetermeer
+van Leeuwenhoeklaan 
+10
+ZOETERMEER 
+NL 
+2713RB
+0793160211
+
+Zwijndrecht
+Burgemeester Jansenlaan 
+49
+ZWIJNDRECHT 
+NL 
+3331HD
+078 6126131

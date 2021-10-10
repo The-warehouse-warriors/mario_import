@@ -14,8 +14,8 @@ def createDbConnector():
         global mydb
         mydb = mysql.connector.connect(
             host="localhost",
-            user="admin",
-            password="<nope>",
+            user="root",
+            password="toor",
             database="marios_pizza"
         )
     except:

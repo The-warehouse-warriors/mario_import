@@ -9,7 +9,7 @@ try:
     mariosDB = msql.connect(
         host="localhost",
         user="root",
-        password="",
+        password="-",
         database="marios_pizza")
 
     table = 'ingredienten'
@@ -91,7 +91,7 @@ def IngredientImport(file):
     print("-- Start inport ingredients--")
 
     # data word geïmporteerd naar een array.
-    df = pd.read_csv (file)
+    df = pd.read_csv (r'C:\Users\harmv\OneDrive\Bureaublad\Extra Ingredienten.csv')
     arrayData = df.values
     arrayLen = len(arrayData)
 
