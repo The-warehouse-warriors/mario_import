@@ -11,7 +11,6 @@ starttime = datetime
 endtime = datetime
 processtime = datetime
 logFile = './logs/ingredients_log.txt'
-timelog = []
 
 try:
     mariosDB = msql.connect(
@@ -69,7 +68,7 @@ def IngredientImport(filename):
     # start tijd word bepaald
     starttime=datetime.datetime.now()
 
-    log("-- Start inport ingredients--")
+    log("-- Start import ingredients--")
 
     # data word geïmporteerd naar een array.
     df = pd.read_csv (filename)
@@ -114,7 +113,7 @@ def IngredientImport(filename):
     # stelt de eind tijd van de inport vast
     endtime = datetime.datetime.now()
     processtime = endtime-starttime
-    log("-- End inport ingredients--")
+    log("-- End import ingredients--")
     log("Total time consumed: ", processtime)
 
 def log(text):
