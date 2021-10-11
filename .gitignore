@@ -13,3 +13,7 @@ import_scripts/files/WinkelsMario.txt
 import_scripts/logs/
 
 .vscode/
+
+import_scripts/.idea/inspectionProfiles/profiles_settings.xml
+
+.idea/
