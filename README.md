@@ -10,6 +10,18 @@ and run: `python .\import_scripts\import.py`
 
 # Scripts
 
+## Ingredients
+
+Import all ingredients
+
+Run `python .\import_scripts\Ingredienten\main.py "<FILE NAME>"`
+
+### Dependencies
+Install pandas for Python
+
+`python -m pip install pandas`
+
+
 ## Shops
 
 Import all shop data from given text file.
