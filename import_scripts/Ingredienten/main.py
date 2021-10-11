@@ -4,34 +4,37 @@ from mysql.connector import Error
 import datetime
 import pandas as pd
 
+logFile = './logs/import_ingredients.txt'
 
-try:
-    mariosDB = msql.connect(
-        host="localhost",
-        user="root",
-        password="-",
-        database="marios_pizza")
+table = 'ingredienten'
+user = "System"
+timeStamp = datetime.datetime.now()
+starttime = datetime
+endtime = datetime
+processtime = datetime
+insertlog = []
+skiplog = []
+timelog = []
 
-    table = 'ingredienten'
-    user = "System"
-    timeStamp = datetime.datetime.now()
-    starttime = datetime
-    endtime = datetime
-    processtime = datetime
-    insertlog = []
-    skiplog = []
-    timelog = []
+def createDbConnector():
+    try:
+        global mariosDB
+        mariosDB = msql.connect(
+            host="localhost",
+            user="root",
+            password="-",
+            database="marios_pizza")
 
 
-    if mariosDB.is_connected():
+        if mariosDB.is_connected():
+            global cursor
+            cursor = mariosDB.cursor()
+            cursor.execute("select database();")
+            record = cursor.fetchone()
+            log('Connected to database')
 
-        cursor = mariosDB.cursor()
-        cursor.execute("select database();")
-        record = cursor.fetchone()
-        print('Connected to database: ', record)
-
-except Error as e:
-    print('--- Error while connecting to database ---', e)
+    except Error as e:
+        log('!! Error while connecting to database :' + e)
 
 
 def removeCharInName(text):
@@ -75,23 +78,23 @@ def TaxImport():
     cursor.execute(sql, val)
 
     mariosDB.commit()
-    print("tax inserted")
+    log("tax inserted")
     sql = "INSERT INTO tax (Tax, Description , CreatedOn, CreatedBy, LastUpdate, UpdateBy ) VALUES (%s, %s, %s, %s, %s, %s)"
     val = (21, "21% BTW", timeStamp, user, timeStamp, user)
     cursor.execute(sql, val)
 
     mariosDB.commit()
-    print("tax inserted")
+    log("tax inserted")
 
 
 def IngredientImport(file):
     # start tijd word bepaald
     starttime=datetime.datetime.now()
 
-    print("-- Start inport ingredients--")
+    log("-- Start inport ingredients")
 
     # data word geïmporteerd naar een array.
-    df = pd.read_csv (r'C:\Users\harmv\OneDrive\Bureaublad\Extra Ingredienten.csv')
+    df = pd.read_csv (file)
     arrayData = df.values
     arrayLen = len(arrayData)
 
@@ -132,17 +135,22 @@ def IngredientImport(file):
     # stelt de eind tijd van de inport vast
     endtime = datetime.datetime.now()
     processtime = endtime-starttime
-    print("-- End inport ingredients--")
-    print("")
-    print("Total time consumed: ", processtime)
+    log("-- End inport ingredients")
+    log("Total time consumed: " + str(processtime))
+
+def log(text):
+    print(text)
+    dtnow = datetime.datetime.now()
+    with open(logFile, 'a') as logger:
+        logger.write(str(dtnow) + ') ' + text + '\n')
 
 if __name__ == '__main__':
 
+    createDbConnector()
+
     if len(sys.argv) < 2:
-        print('Missing argument!')
+        log('Missing argument!')
         exit()
 
-    print('file: ' + sys.argv[1])
     filename = sys.argv[1]
-
     IngredientImport(filename)
