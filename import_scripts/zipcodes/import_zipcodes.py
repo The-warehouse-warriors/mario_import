@@ -128,7 +128,7 @@ def addMunicipality(id, name):
     mycursor = mydb.cursor()
     mycursor.execute(sql, val)
     mydb.commit()
-    log("Municipality inserted, ID:", mycursor.lastrowid)
+    log("Municipality inserted, ID:" + str(mycursor.lastrowid))
 
 # Insert data with Stored procedure
 
