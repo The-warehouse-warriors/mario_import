@@ -7,7 +7,7 @@ SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 AccessMunicipalityTable = "GEMEENTEN"
 AccessZipcodeTable = "POSTCODES"
-logFile = './logs/zipcode_log.txt'
+logFile = 'D:\Fontys\Marios_pizza\mario_import\import_scripts\zipcodes\logs\zipcode_log.txt'
 
 def createDbConnector():
     try:
@@ -57,10 +57,12 @@ def handleMunicipality(filename):
             # check if municipality exists
             if not checkMunicipalityExists(id, name):
                 addMunicipality(id, name)
+
         log("Done import Municipality")
 
     except pyodbc.Error:
         log("!! ERROR: Cant find/open Access file")
+
 
 # Zipcode Table
 def handleZipcodes(filename):
@@ -86,6 +88,8 @@ def handleZipcodes(filename):
             street = str(row[5])
             municipalityId = row[6]
 
+            log("- "+str(i))
+
             # Call SP to insert
             addZipcode(
                 zipcode,
@@ -109,25 +113,29 @@ def handleZipcodes(filename):
 
 # Insert into SQL DB
 def addMunicipality(id, name):
+    log("Insert: " + str(id) + " - " + name)
     dtNow = datetime.now()
-    try:
-        sql = "INSERT INTO municipality (ID, Name, CreatedOn, CreatedBy, LastUpdate, UpdateBy) VALUES (%s,%s,%s,%s,%s,%s)"
-        val = (
-            id,
-            name,
-            dtNow.strftime("%Y-%m-%d %H:%M:%S"),
-            "System - import",
-            dtNow.strftime("%Y-%m-%d %H:%M:%S"),
-            "System - import"
-        )
-        mycursor = mydb.cursor()
-        mycursor.execute(sql, val)
-        mydb.commit()
-    except pyodbc.Error as e:
-        log(e)
+
+    sql = "INSERT INTO municipality (ID, Name, CreatedOn, CreatedBy, LastUpdate, UpdateBy) VALUES (%s,%s,%s,%s,%s,%s)"
+    val = (
+        id,
+        name,
+        dtNow.strftime("%Y-%m-%d %H:%M:%S"),
+        "System - import",
+        dtNow.strftime("%Y-%m-%d %H:%M:%S"),
+        "System - import"
+    )
+    mycursor = mydb.cursor()
+    mycursor.execute(sql, val)
+    mydb.commit()
+    log("Municipality inserted, ID:", mycursor.lastrowid)
 
 # Insert data with Stored procedure
+
+
 def addZipcode(zipcode, breakpointStart, breakpointEnd, city, street, municipalityId):
+    #print("- Insert: " + zipcode)
+
     try:
         mycursor = mydb.cursor()
         args = [
@@ -144,52 +152,53 @@ def addZipcode(zipcode, breakpointStart, breakpointEnd, city, street, municipali
     except pyodbc.Error as e:
         log(e)
 
+
 # Item Exists check functions
 
 # Municipality
 def checkMunicipalityExists(id, name):
-    try:
-        query = "SELECT * FROM {Table} WHERE ID = '{Id}' OR Name = '{Name}'".format(
-            Table=SQLMunicipalityTable,
-            Id=id,
-            Name=name,
-        )
+    log("Check Municipality")
 
-        mycursor = mydb.cursor()
-        mycursor.execute(query)
-        result = mycursor.fetchall()
+    query = "SELECT * FROM {Table} WHERE ID = '{Id}' OR Name = '{Name}'".format(
+        Table=SQLMunicipalityTable,
+        Id=id,
+        Name=name,
+    )
 
-        # log result
-        if len(result) == 0:
-            return False
-        else:
-            return True
-    except pyodbc.Error as e:
-        log(e)
+    mycursor = mydb.cursor()
+    mycursor.execute(query)
+    result = mycursor.fetchall()
 
-    return False
+    # log result
+    if len(result) == 0:
+        log("No Municipality found")
+        return False
+    else:
+        log("Municipality found")
+        return True
 
 
 # City
 def checkCityExists(name):
-    try:
-        query = "SELECT * FROM {Table} WHERE Name = '{Name}'".format(
-            Table=SQLCityTable,
-            Name=name
-        )
-        mycursor = mydb.cursor()
-        mycursor.execute(query)
-        result = mycursor.fetchall()
+    log("Check City")
 
-        # log result
-        if len(result) == 0:
-            return False
-        else:
-            return True
-    except pyodbc.Error as e:
-        log(e)
+    query = "SELECT * FROM {Table} WHERE Name = '{Name}'".format(
+        Table=SQLCityTable,
+        Name=name
+    )
 
-    return False
+    mycursor = mydb.cursor()
+    mycursor.execute(query)
+    result = mycursor.fetchall()
+
+    # log result
+    if len(result) == 0:
+        log("No City found")
+        return False
+    else:
+        log("City found")
+        return True
+
 
 def log(text):
     print(text)
@@ -210,4 +219,3 @@ if __name__ == '__main__':
 
     filename = sys.argv[1]    
     importFile(filename)
-    log("--- DONE importer ---")

@@ -1,0 +1,490 @@
+ID,Name,CreatedOn,CreatedBy,LastUpdate,UpdateBy,Deleted
+3,APPINGEDAM,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+5,BEDUM,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+7,BELLINGWEDDE,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+9,TEN BOER,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+10,DELFZIJL,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+14,GRONINGEN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+15,GROOTEGAST,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+17,HAREN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+18,HOOGEZAND-SAPPEMEER,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+22,LEEK,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+24,LOPPERSUM,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+25,MARUM,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+34,ALMERE,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+37,STADSKANAAL,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+39,SCHEEMDA,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+40,SLOCHTEREN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+47,VEENDAM,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+48,VLAGTWEDDE,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+50,ZEEWOLDE,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+51,SKARSTERLN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+52,WINSCHOTEN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+53,WINSUM,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+55,BOARNSTERHIM,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+56,ZUIDHORN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+58,DONGERADEEL,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+59,ACHTKARSPELEN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+60,AMELAND,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+63,HET BILDT,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+64,BOLSWARD,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+65,DANTUMADEEL,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+70,FRANEKERADEEL,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+72,HARLINGEN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+74,HEERENVEEN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+79,KOLLUMERLAND CA,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+80,LEEUWARDEN,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+81,LEEUWARDERADEEL,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+82,LEMSTERLAND,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+83,MENALDUMADEEL,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+85,OOSTSTELLINGWERF,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+86,OPSTERLAND,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+88,SCHIERMONNIKOOG,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+90,SMALLINGERLAND,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+91,SNEEK,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+93,TERSCHELLING,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+96,VLIELAND,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+98,WESTSTELLINGWERF,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+104,NYEFURD,2021-10-06 18:29:56,System - import,2021-10-06 18:29:56,System - import,0
+106,ASSEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+109,COEVORDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+114,EMMEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+118,HOOGEVEEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+119,MEPPEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+140,LITTENSERADIEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+141,ALMELO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+144,BATHMEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+147,BORNE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+148,DALFSEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+150,DEVENTER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+153,ENSCHEDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+158,HAAKSBERGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+160,HARDENBERG,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+163,HELLENDOORN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+164,HENGELO OV,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+166,KAMPEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+168,LOSSER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+171,NOORDOOSTPOLDER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+173,OLDENZAAL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+175,OMMEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+177,RAALTE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+178,RIJSSEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+180,STAPHORST,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+183,TUBBERGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+184,URK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+189,WIERDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+193,ZWOLLE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+196,RIJNWAARDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+197,AALTEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+199,ANGERLO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+200,APELDOORN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+202,ARNHEM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+203,BARNEVELD,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+207,BERGH,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+209,BEUNINGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+211,BORCULO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+213,BRUMMEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+214,BUREN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+216,CULEMBORG,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+218,DIDAM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+219,DINXPERLO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+221,DOESBURG,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+222,DOETINCHEM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+225,DRUTEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+226,DUIVEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+228,EDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+229,EIBERGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+230,ELBURG,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+232,EPE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+233,ERMELO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+236,GELDERMALSEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+237,GENDRINGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+239,GORSSEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+240,GROENLO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+241,GROESBEEK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+243,HARDERWIJK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+244,HATTEM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+246,HEERDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+248,HENGELO GLD,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+252,HEUMEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+256,HUMMELO EN KEPPEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+258,KESTEREN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+260,LICHTENVOORDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+262,LOCHEM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+263,MAASDRIEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+265,MILLINGEN AAN DE RIJN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+266,NEEDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+267,NIJKERK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+268,NIJMEGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+269,OLDEBROEK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+273,PUTTEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+274,RENKUM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+275,RHEDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+277,ROZENDAAL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+278,RUURLO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+279,SCHERPENZEEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+280,STEENDEREN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+281,TIEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+282,UBBERGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+285,VOORST,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+286,VORDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+289,WAGENINGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+291,WARNSVELD,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+292,WEHL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+293,WESTERVOORT,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+294,WINTERSWIJK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+295,WISCH,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+296,WIJCHEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+297,ZALTBOMMEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+298,ZELHEM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+299,ZEVENAAR,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+301,ZUTPHEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+302,NUNSPEET,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+303,DRONTEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+304,NEERIJNEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+305,ABCOUDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+306,AMERONGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+307,AMERSFOORT,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+308,BAARN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+310,DE BILT,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+311,BREUKELEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+312,BUNNIK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+313,BUNSCHOTEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+315,DOORN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+316,DRIEBERGEN-RIJSENBURG,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+317,EEMNES,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+321,HOUTEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+326,LEERSUM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+327,LEUSDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+329,LOENEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+331,LOPIK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+332,MAARN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+333,MAARSSEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+335,MONTFOORT,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+339,RENSWOUDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+340,RHENEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+342,SOEST,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+344,UTRECHT,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+345,VEENENDAAL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+351,WOUDENBERG,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+352,WIJK BIJ DUURSTEDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+353,IJSSELSTEIN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+355,ZEIST,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+356,NIEUWEGEIN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+358,AALSMEER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+361,ALKMAAR,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+362,AMSTELVEEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+363,AMSTERDAM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+364,ANDIJK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+365,GRAFT-DE RIJP,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+366,ANNA PAULOWNA,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+370,BEEMSTER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+372,BENNEBROEK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+373,BERGEN NH,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+375,BEVERWIJK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+376,BLARICUM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+377,BLOEMENDAAL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+381,BUSSUM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+383,CASTRICUM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+384,DIEMEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+385,EDAM-VOLENDAM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+388,ENKHUIZEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+392,HAARLEM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+393,HAARLEMMERLIEDE CA,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+394,HAARLEMMERMEER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+395,HARENKARSPEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+396,HEEMSKERK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+397,HEEMSTEDE,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+398,HEERHUGOWAARD,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+399,HEILOO,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+400,DEN HELDER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+402,HILVERSUM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+405,HOORN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+406,HUIZEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+412,NIEDORP,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+415,LANDSMEER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+416,LANGEDIJK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+417,LAREN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+420,MEDEMBLIK,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+424,MUIDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+425,NAARDEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+429,OBDAM,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+431,OOSTZAAN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+432,OPMEER,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+437,OUDER-AMSTEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+439,PURMEREND,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+441,SCHAGEN,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+448,TEXEL,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+450,UITGEEST,2021-10-06 18:29:57,System - import,2021-10-06 18:29:57,System - import,0
+451,UITHOORN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+453,VELSEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+454,VENHUIZEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+457,WEESP,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+458,SCHERMER,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+459,WERVERSHOOF,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+462,WIERINGEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+463,WIERINGERMEER,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+466,WOGNUM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+473,ZANDVOORT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+476,ZIJPE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+478,ZEEVANG,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+479,ZAANSTAD,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+480,TER AAR,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+482,ALBLASSERDAM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+483,ALKEMADE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+484,ALPHEN AAN DEN RIJN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+489,BARENDRECHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+491,BERGAMBACHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+492,BERGSCHENHOEK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+493,BERKEL EN RODENRIJS,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+495,BLEISWIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+497,BODEGRAVEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+498,DRECHTERLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+499,BOSKOOP,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+501,BRIELLE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+502,CAPELLE AAN DEN IJSSEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+503,DELFT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+504,DIRKSLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+505,DORDRECHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+511,GOEDEREEDE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+512,GORINCHEM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+513,GOUDA,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+517,S GRAVENDEEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+518,S GRAVENHAGE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+519,S GRAVENZANDE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+523,HARDINXVELD-GIESSENDAM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+529,NOORDER-KOGGENLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+530,HELLEVOETSLUIS,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+531,HENDRIK-IDO-AMBACHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+532,STEDE BROEC,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+534,HILLEGOM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+537,KATWIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+542,KRIMPEN AAN DEN IJSSEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+545,LEERDAM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+546,LEIDEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+547,LEIDERDORP,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+552,DE LIER,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+553,LISSE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+555,MAASLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+556,MAASSLUIS,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+558,WESTER-KOGGENLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+559,MIDDELHARNIS,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+562,MONSTER,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+563,MOORDRECHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+565,NAALDWIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+567,NIEUWERKERK AD IJSSEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+568,BERNISSE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+569,NIEUWKOOP,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+571,NIEUW-LEKKERLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+575,NOORDWIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+576,NOORDWIJKERHOUT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+579,OEGSTGEEST,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+580,OOSTFLAKKEE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+584,OUD-BEIJERLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+585,BINNENMAAS,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+588,KORENDIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+589,OUDEWATER,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+590,PAPENDRECHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+595,REEUWIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+597,RIDDERKERK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+599,ROTTERDAM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+600,ROZENBURG,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+602,RIJNSBURG,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+603,RIJSWIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+604,SASSENHEIM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+606,SCHIEDAM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+607,SCHIPLUIDEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+608,SCHOONHOVEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+610,SLIEDRECHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+611,CROMSTRIJEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+612,SPIJKENISSE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+613,ALBRANDSWAARD,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+614,WESTVOORNE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+617,STRIJEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+619,VALKENBURG ZH,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+620,VIANEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+622,VLAARDINGEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+623,VLIST,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+625,VOORHOUT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+626,VOORSCHOTEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+627,WADDINXVEEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+628,WARMOND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+629,WASSENAAR,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+630,WATERINGEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+632,WOERDEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+637,ZOETERMEER,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+638,ZOETERWOUDE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+642,ZWIJNDRECHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+643,NEDERLEK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+644,OUDERKERK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+645,JACOBSWOUDE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+653,GAASTERLN-SLEAT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+654,BORSELE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+664,GOES,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+668,WEST MAAS EN WAAL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+677,HULST,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+678,KAPELLE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+683,WYMBRITSERADIEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+687,MIDDELBURG,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+689,GIESSENLANDEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+693,GRAAFSTROOM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+694,LIESVELD,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+703,REIMERSWAAL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+707,ZEDERIK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+710,WNSERADIEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+715,TERNEUZEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+716,THOLEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+717,VEERE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+718,VLISSINGEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+733,LINGEWAAL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+736,DE RONDE VENEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+737,TYTSJERKSTERADIEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+738,AALBURG,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+743,ASTEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+744,BAARLE-NASSAU,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+748,BERGEN OP ZOOM,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+753,BEST,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+755,BOEKEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+756,BOXMEER,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+757,BOXTEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+758,BREDA,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+762,DEURNE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+765,PEKELA,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+766,DONGEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+770,EERSEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+772,EINDHOVEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+777,ETTEN-LEUR,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+779,GEERTRUIDENBERG,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+781,GELDROP,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+784,GILZE EN RIJEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+785,GOIRLE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+786,GRAVE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+788,HAAREN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+794,HELMOND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+796,S HERTOGENBOSCH,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+797,HEUSDEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+798,HILVARENBEEK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+808,LITH,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+809,LOON OP ZAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+814,MIERLO,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+815,MILL EN SINT HUBERT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+820,NUENEN CA,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+823,OIRSCHOT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+824,OISTERWIJK,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+826,OOSTERHOUT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+828,OSS,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+840,RUCPHEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+844,SCHIJNDEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+845,SINT-MICHIELSGESTEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+846,SINT-OEDENRODE,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+847,SOMEREN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+848,SON EN BREUGEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+851,STEENBERGEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+852,WATERLAND,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+855,TILBURG,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+856,UDEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+858,VALKENSWAARD,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+860,VEGHEL,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+861,VELDHOVEN,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+865,VUGHT,2021-10-06 18:29:58,System - import,2021-10-06 18:29:58,System - import,0
+866,WAALRE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+867,WAALWIJK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+870,WERKENDAM,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+873,WOENSDRECHT,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+874,WOUDRICHEM,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+879,ZUNDERT,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+880,WORMERLAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+881,ONDERBANKEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+882,LANDGRAAF,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+885,ARCEN EN VELDEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+888,BEEK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+889,BEESEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+893,BERGEN LB,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+899,BRUNSSUM,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+905,EIJSDEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+907,GENNEP,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+914,HAELEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+917,HEERLEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+918,HELDEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+920,HEYTHUYSEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+925,HUNSEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+928,KERKRADE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+929,KESSEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+933,MAASBRACHT,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+934,MAASBREE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+935,MAASTRICHT,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+936,MARGRATEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+938,MEERSSEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+941,MEIJEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+944,MOOK EN MIDDELAAR,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+946,NEDERWEERT,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+951,NUTH,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+957,ROERMOND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+962,SCHINNEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+964,SEVENUM,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+965,SIMPELVELD,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+971,STEIN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+975,SWALMEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+977,THORN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+981,VAALS,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+983,VENLO,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+984,VENRAY,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+986,VOERENDAAL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+988,WEERT,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+993,MEERLO-WANSSUM,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+994,VALKENBURG AAN DE GEUL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+995,LELYSTAD,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1507,HORST AAN DE MAAS,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1651,EEMSMOND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1652,GEMERT-BAKEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1655,HALDERBERGE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1658,HEEZE-LEENDE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1659,LAARBEEK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1661,REIDERLAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1663,DE MARNE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1666,ZEVENHUIZEN-MOERKAPELLE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1667,REUSEL-DE MIERDEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1669,ROERDALEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1670,ROGGEL EN NEER,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1671,MAASDONK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1672,RIJNWOUDE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1673,LIEMEER,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1674,ROOSENDAAL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1676,SCHOUWEN-DUIVELAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1679,AMBT MONTFORT,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1680,AA EN HUNZE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1681,BORGER-ODOORN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1684,CUIJK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1685,LANDERD,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1690,DE WOLDEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1695,NOORD BEVELAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1696,WIJDEMEREN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1699,NOORDENVELD,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1700,TWENTERAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1701,WESTERVELD,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1702,SINT ANTHONIS,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1705,LINGEWAARD,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1706,CRANENDONCK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1708,STEENWIJKERLAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1709,MOERDIJK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1711,ECHT-SUSTEREN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1714,SLUIS,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1719,DRIMMELEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1721,BERNHEZE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1722,FERWERDERADIEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1723,ALPHEN-CHAAM,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1724,BERGEIJK,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1728,BLADEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1729,GULPEN-WITTEM,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1730,TYNAARLO,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1731,MIDDEN-DRENTHE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1734,OVERBETUWE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1735,HOF VAN TWENTE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1773,OLST-WIJHE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1774,DINKELLAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1883,SITTARD-GELEEN,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1896,ZWARTEWATERLAND,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1916,LEIDSCHENDAM-VOORBURG,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1926,PIJNACKER-NOOTDORP,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1937,HEEL,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
+1987,MENTERWOLDE,2021-10-06 18:29:59,System - import,2021-10-06 18:29:59,System - import,0
