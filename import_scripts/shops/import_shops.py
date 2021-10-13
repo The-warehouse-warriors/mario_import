@@ -55,9 +55,6 @@ def handleReccords(shopInfo):
     if shopInfo[0] == '':
         return
 
-    log("- Handle Reccord")
-    log("Naam: " + shopInfo[0])
-
     # check if shop exists
     if not checkShopExists(shopInfo):
         addShop(shopInfo)
@@ -65,52 +62,54 @@ def handleReccords(shopInfo):
 
 # Check of shop/address exists
 def checkShopExists(shopInfo):
-    log("Check shop")
 
-    query = "SELECT * FROM {ShopTable} WHERE name = '{Name}' AND StreetName = '{StreetName}' AND HouseNumber = '{HouseNumber}' AND Zipcode = '{Zipcode}'".format(
-        ShopTable=shopTable,
-        Name=shopInfo[0],
-        StreetName=shopInfo[1],
-        HouseNumber=shopInfo[2],
-        # Remove spaces, to uppercase
-        Zipcode=shopInfo[5].replace(" ", "").upper()
-    )
+    try:
+        query = "SELECT * FROM {ShopTable} WHERE name = '{Name}' AND StreetName = '{StreetName}' AND HouseNumber = '{HouseNumber}' AND Zipcode = '{Zipcode}'".format(
+            ShopTable=shopTable,
+            Name=shopInfo[0],
+            StreetName=shopInfo[1],
+            HouseNumber=shopInfo[2],
+            # Remove spaces, to uppercase
+            Zipcode=shopInfo[5].replace(" ", "").upper()
+        )
 
-    mycursor = mydb.cursor()
-    mycursor.execute(query)
-    result = mycursor.fetchall()
+        mycursor = mydb.cursor()
+        mycursor.execute(query)
+        result = mycursor.fetchall()
 
-    # Log result
-    if len(result) == 0:
-        log("No shop found")
-        return False
-    else:
-        log("Shop found")
-        return True
+        # Log result
+        if len(result) == 0:
+            return False
+        else:
+            return True
+    except Exception as err:
+        log(err)
 
 
 def addShop(shopInfo):
     log("Adding shop")
     dtNow = datetime.now()
-   
-    sql = "INSERT INTO shop (Name, Phone, Email ,StreetName, HouseNumber, Zipcode, City, CreatedOn, CreatedBy, LastUpdate, UpdateBy) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    val = (
-        shopInfo[0],
-        shopInfo[6],
-        "",  # Email not given
-        shopInfo[1],
-        shopInfo[2],
-        shopInfo[5].replace(" ", "").upper(),  # Remove spaces, to uppercase
-        shopInfo[3],
-        dtNow.strftime("%Y-%m-%d %H:%M:%S"),
-        "System - import",
-        dtNow.strftime("%Y-%m-%d %H:%M:%S"),
-        "System - import"
-    )
-    mycursor = mydb.cursor()
-    mycursor.execute(sql, val)
-    mydb.commit()
-    log("Shop inserted, ID:", mycursor.lastrowid)
+    
+    try:
+        sql = "INSERT INTO shop (Name, Phone, Email ,StreetName, HouseNumber, Zipcode, City, CreatedOn, CreatedBy, LastUpdate, UpdateBy) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (
+            shopInfo[0],
+            shopInfo[6],
+            "",  # Email not given
+            shopInfo[1],
+            shopInfo[2],
+            shopInfo[5].replace(" ", "").upper(),  # Remove spaces, to uppercase
+            shopInfo[3],
+            dtNow.strftime("%Y-%m-%d %H:%M:%S"),
+            "System - import",
+            dtNow.strftime("%Y-%m-%d %H:%M:%S"),
+            "System - import"
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute(sql, val)
+        mydb.commit()
+    except Exception as err:
+        log(err)
 
 def log(text):
     print(text)
@@ -129,3 +128,4 @@ if __name__ == '__main__':
 
     filename = sys.argv[1]
     importStore(filename)
+    log("--- End importer ---")
