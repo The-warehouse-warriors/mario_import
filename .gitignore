@@ -17,3 +17,5 @@ import_scripts/logs/
 import_scripts/.idea/inspectionProfiles/profiles_settings.xml
 
 .idea/
+
+import_scripts/temp/tempZipcode.csv

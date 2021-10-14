@@ -5,5 +5,7 @@ create table tempZipcodes
 	BreakEnd varchar(255) null,
 	City varchar(255) null,
 	Street varchar(255) null,
-	MunId varchar(255) null
+	MunId varchar(255) null,
+	CityId int null,
+	StreetId int null
 );

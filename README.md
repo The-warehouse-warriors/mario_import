@@ -44,5 +44,11 @@ Install pyodbc:
 
 `python -m pip install pyodbc`
 
+Install SQLAlchemy
+`python -m pip install SQLAlchemy`
+
+Install PyMySQL
+`python -m pip install PyMySQL`
+
 ### Stored procedure
 Add the `ImportZipcodes_SP.sql` to MySql

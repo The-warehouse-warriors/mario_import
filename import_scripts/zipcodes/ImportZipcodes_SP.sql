@@ -1,66 +1,98 @@
-DROP PROCEDURE IF EXISTS ImportZipcodes;
+DROP PROCEDURE IF EXISTS ImportTempZipcodes;
 
 DELIMITER $$
-CREATE PROCEDURE ImportZipcodes(
-    IN inZipcode varchar(6),
-    IN inBreakpointStart varchar(6),
-    IN inBreakpointEnd varchar(6),
-    IN inCityName varchar(45),
-    IN inStreetName varchar(75),
-    IN inMunicipalityId int
-)
+CREATE PROCEDURE ImportTempZipcodes()
 BEGIN
 
-    SET FOREIGN_KEY_CHECKS = 0;
+    SET @importDate = NOW();
+    SET @importName = 'System - import';
 
-    /* Check if city exists in DB, if not create */
-    SET @city_id = (SELECT id FROM city WHERE Name = inCityName);
-    IF (@city_id IS NULL) THEN
-        INSERT INTO city (Name, Municipality_ID, CreatedOn, CreatedBy, LastUpdate, UpdateBy)
-        VALUE (
-               inCityName,
-               inmunicipalityId,
-               NOW(),
-               'System - import',
-               NOW(),
-               'System - import'
-        );
+    -- ADD CITY'S
+    INSERT INTO city (
+        Name, 
+        Municipality_ID, 
+        CreatedOn, 
+        CreatedBy, 
+        UpdateBy, 
+        LastUpdate
+    )
+    SELECT DISTINCT 
+        City, 
+        MunId, 
+        @importDate, 
+        @importName, 
+        @importName, 
+        @importDate 
+    FROM tempzipcodes as temp
+    WHERE NOT EXISTS(
+        SELECT Name 
+        FROM city 
+        WHERE Name = temp.City
+    );
 
-        SELECT last_insert_id() INTO @city_id;
-    END IF;
+    -- Update temp with City ID
+    UPDATE tempzipcodes temp
+    JOIN city on City.Name = temp.City
+    SET temp.CityId = City.ID
+    WHERE temp.CityId IS NULL;
 
-    /* Check if Street exists in DB, if not create */
-    SET @street_id = (SELECT id FROM street WHERE Name = inStreetName);
-    IF (@street_id IS NULL) THEN
-        INSERT INTO street (Name, City_ID, CreatedOn, CreatedBy, LastUpdate, UpdateBy)
-        VALUE (
-               inStreetName,
-               @city_id,
-               NOW(),
-               'System - import',
-               NOW(),
-               'System - import'
-        );
-        SELECT last_insert_id() INTO @street_id;
-    END IF;
+    -- INSERT street
+    INSERT INTO street (
+        Name,
+        City_ID,
+        CreatedOn,
+        CreatedBy,
+        UpdateBy,
+        LastUpdate
+    )
+    SELECT DISTINCT  
+        Street, 
+        CityId,
+        @importDate,
+        @importName,
+        @importName,
+        @importDate 
+    FROM tempzipcodes as temp
+    WHERE NOT EXISTS(
+        SELECT name 
+        FROM street 
+        WHERE Name = temp.Street
+    );
 
-    /* Check if servicearea exists in DB, if not create */
-    SET @servicearea_id = (SELECT id FROM servicearea WHERE Zipcode = inZipcode);
-    IF (@servicearea_id IS NULL) THEN
-        INSERT INTO servicearea (Zipcode, BreakpointStart, BreakpointEnd, Street_ID, CreatedOn, CreatedBy, LastUpdate, UpdateBy)
-        VALUE (
-            inZipcode,
-            inBreakpointStart,
-            inBreakpointEnd,
-            @street_id,
-            NOW(),
-            'System - import',
-            NOW(),
-            'System - import'
-        );
-    END IF;
+    -- UPDATE temp with street ID
+    UPDATE tempzipcodes temp
+    JOIN street ON temp.Street = Street.Name
+    SET temp.StreetId = Street.ID
+    WHERE temp.StreetId IS NULL;
 
-    SET FOREIGN_KEY_CHECKS = 1;
+    -- INSERT INTO SERVICE
+    INSERT INTO servicearea (
+        Zipcode, 
+        BreakpointStart, 
+        BreakpointEnd, 
+        Street_ID, 
+        CreatedOn, 
+        CreatedBy, 
+        LastUpdate, 
+        UpdateBy
+    )
+    SELECT DISTINCT 
+        UPPER(REPLACE(Zipcode, ' ', '')),
+        BreakStart,
+        BreakEnd,
+        StreetId, 
+        @importDate, 
+        @importName, 
+        @importDate, 
+        @importName 
+    FROM tempzipcodes as temp
+    WHERE NOT EXISTS(
+        SELECT Zipcode 
+        FROM servicearea 
+        WHERE servicearea.Zipcode = UPPER(REPLACE(temp.Zipcode, ' ', '')) 
+        AND servicearea.BreakpointStart = temp.BreakStart
+    );
 
 END $$;
 DELIMITER ;
+
