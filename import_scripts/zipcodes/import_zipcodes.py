@@ -160,7 +160,7 @@ def createTempZipcodeCsv(filename):
         f = open(tempCsv, 'w', encoding='UTF8', newline='')
         writer = csv.writer(f)
 
-        header = ['Zipcode', 'BreakStart',' BreakEnd', 'City', 'Street', 'MunId', 'CityId', 'StreetId']
+        header = ['Zipcode', 'BreakStart', 'BreakEnd', 'City', 'Street', 'MunId', 'CityId', 'StreetId']
         writer.writerow(header)
 
         i = 0
