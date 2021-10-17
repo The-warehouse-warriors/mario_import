@@ -46,7 +46,6 @@ def removeCharInPrice(text):
         else:
             for ch in charactersToRemove:
                 text = text.replace(ch, "")
-           # text = float(text)
     return text
 
 
@@ -106,15 +105,15 @@ def IngredientImport(filename):
         val = (cleanname, cleanprice, 1, timeStamp, user, timeStamp, user)
         cursor.execute(sql, val)
         mariosDB.commit()
-        loginput = "input: {} with name: {} and price: €{} is inserted"
-        log(loginput.format(i+1, cleanname, cleanprice))
+#        loginput = "input: {} with name: {} and price: €{} is inserted"
+#        log(loginput.format(i+1, cleanname, cleanprice))
         i+=1
 
     # stelt de eind tijd van de inport vast
     endtime = datetime.datetime.now()
     processtime = endtime-starttime
     log("-- End import ingredients--")
-    log("Total time consumed: ", processtime)
+    log("Total import time: ", processtime)
 
 def log(text):
     print(text)
@@ -125,10 +124,8 @@ def log(text):
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
-        print('Missing argument!')
+        log('Missing argument!')
         exit()
 
-    print('file: ' + sys.argv[1])
     filename = sys.argv[1]
-
     IngredientImport(filename)

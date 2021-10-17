@@ -16,7 +16,7 @@ try:
     mariosDB = msql.connect(
         host="localhost",
         user="root",
-        password="HvG5217405",
+        password="-",
         database="marios_pizza")
 
     if mariosDB.is_connected():
@@ -80,8 +80,8 @@ def taxImport(filename):
         val = (cleanbtw, cleandesc, timeStamp, user, timeStamp, user)
         cursor.execute(sql, val)
         mariosDB.commit()
-        loginput = "input: {} with tax: {} is inserted"
-        log(loginput.format(i + 1, cleanbtw))
+#        loginput = "input: {} with tax: {} is inserted"
+#        log(loginput.format(i + 1, cleanbtw))
         i += 1
 
     endtime = datetime.datetime.now()
@@ -99,10 +99,8 @@ def log(text):
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
-        print('Missing argument!')
+        log('Missing argument!')
         exit()
 
-    print('file: ' + sys.argv[1])
     filename = sys.argv[1]
-
     taxImport(filename)
