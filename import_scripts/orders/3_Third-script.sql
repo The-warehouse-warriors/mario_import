@@ -1,11 +1,11 @@
 # Clear table
 TRUNCATE new_schema.marioorderdata01;
 
-LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified.csv'
-	INTO TABLE new_schema.marioorderdata01
-	FIELDS TERMINATED BY ';' 
-	LINES TERMINATED BY '\n'
-	IGNORE 1 LINES;
+-- LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified.csv'
+-- 	INTO TABLE new_schema.marioorderdata01
+-- 	FIELDS TERMINATED BY ';' 
+-- 	LINES TERMINATED BY '\n'
+-- 	IGNORE 1 LINES;
 
 SELECT * FROM new_schema.marioorderdata01;
 
