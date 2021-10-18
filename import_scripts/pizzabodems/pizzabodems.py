@@ -4,7 +4,7 @@ from mysql.connector import Error
 # import pymysql
 from openpyxl import load_workbook
 
-df = pd.read_excel('pizzabodems.xlsx')
+df = pd.read_excel('C:\\Users\\Mikel\\IdeaProjects\\mario_import\\import_scripts\\pizzabodems\\pizzabodems.xlsx')
 print(df.to_string())
 table = "temporaryPizzaBottoms"
 
@@ -45,9 +45,13 @@ def fillTable():
     except Error as e:
         print(e)
 
+def callProc():
+    cursor.callproc('fill_pizzabottom')
+
 createDbConnector()
 createTable()
 fillTable()
+callProc()
 mydb.close()
 
 
