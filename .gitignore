@@ -10,4 +10,15 @@ import_scripts/shops/.idea/
 
 import_scripts/files/WinkelsMario.txt
 
-import_scripts/pizzabodems/.idea/
+import_scripts/logs/
+
+.vscode/
+
+import_scripts/.idea/inspectionProfiles/profiles_settings.xml
+
+.idea/
+
+import_scripts/temp/tempZipcode.csv
+
+import_scripts/files/
+>>>>>>> 8f68d1b4698b0bd853fbd1194ecda3c1ab0a0594

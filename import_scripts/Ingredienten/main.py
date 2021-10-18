@@ -4,24 +4,20 @@ from mysql.connector import Error
 import datetime
 import pandas as pd
 
+table = 'ingredienten'
+user = "System"
+timeStamp = datetime.datetime.now()
+starttime = datetime
+endtime = datetime
+processtime = datetime
+logFile = './logs/ingredients_log.txt'
 
 try:
     mariosDB = msql.connect(
         host="localhost",
         user="root",
-        password="",
+        password="-",
         database="marios_pizza")
-
-    table = 'ingredienten'
-    user = "System"
-    timeStamp = datetime.datetime.now()
-    starttime = datetime
-    endtime = datetime
-    processtime = datetime
-    insertlog = []
-    skiplog = []
-    timelog = []
-
 
     if mariosDB.is_connected():
 
@@ -50,7 +46,6 @@ def removeCharInPrice(text):
         else:
             for ch in charactersToRemove:
                 text = text.replace(ch, "")
-           # text = float(text)
     return text
 
 
@@ -68,30 +63,14 @@ def CheckIngredientExists(ingredient):
     else:
         return True
 
-
-def TaxImport():
-    sql = "INSERT INTO tax (Tax, Description , CreatedOn, CreatedBy, LastUpdate, UpdateBy ) VALUES (%s, %s, %s, %s, %s, %s)"
-    val = (9, "9% BTW", timeStamp, user, timeStamp, user)
-    cursor.execute(sql, val)
-
-    mariosDB.commit()
-    print("tax inserted")
-    sql = "INSERT INTO tax (Tax, Description , CreatedOn, CreatedBy, LastUpdate, UpdateBy ) VALUES (%s, %s, %s, %s, %s, %s)"
-    val = (21, "21% BTW", timeStamp, user, timeStamp, user)
-    cursor.execute(sql, val)
-
-    mariosDB.commit()
-    print("tax inserted")
-
-
-def IngredientImport(file):
+def IngredientImport(filename):
     # start tijd word bepaald
     starttime=datetime.datetime.now()
 
-    print("-- Start inport ingredients--")
+    log("-- Start import ingredients--")
 
     # data word geïmporteerd naar een array.
-    df = pd.read_csv (file)
+    df = pd.read_csv (filename)
     arrayData = df.values
     arrayLen = len(arrayData)
 
@@ -104,8 +83,8 @@ def IngredientImport(file):
 
         cleanprice = removeCharInPrice(rawprice)
         if cleanprice == False:
-            logInsert = "Insert {} skipt because of wrong value in price. ({})"
-            skiplog.append(logInsert.format(i + 1, rawprice))
+            loginput = "! Insert {} skipt because of wrong value in price. ({})"
+            log(loginput.format(i + 1, rawprice))
             i += 1
             continue
 
@@ -116,8 +95,9 @@ def IngredientImport(file):
         Check = CheckIngredientExists(cleanname)
 
         if Check == True:
-            logInsert = "input: {} with name: {} and price: €{} is not inserted: already exists"
-            skiplog.append(logInsert.format(i + 1, cleanname, cleanprice))
+
+            loginput = "! input: {} with name: {} and price: €{} is not inserted: already exists"
+            log(loginput.format(i + 1, cleanname, cleanprice))
             i+=1
             continue
 
@@ -125,24 +105,27 @@ def IngredientImport(file):
         val = (cleanname, cleanprice, 1, timeStamp, user, timeStamp, user)
         cursor.execute(sql, val)
         mariosDB.commit()
-        logInsert = "input: {} with name: {} and price: €{} is inserted"
-        insertlog.append(logInsert.format(i+1, cleanname, cleanprice))
+#        loginput = "input: {} with name: {} and price: €{} is inserted"
+#        log(loginput.format(i+1, cleanname, cleanprice))
         i+=1
 
     # stelt de eind tijd van de inport vast
     endtime = datetime.datetime.now()
     processtime = endtime-starttime
-    print("-- End inport ingredients--")
-    print("")
-    print("Total time consumed: ", processtime)
+    log("-- End import ingredients--")
+    log("Total import time: ", processtime)
+
+def log(text):
+    print(text)
+    dtnow = datetime.datetime.now()
+    with open(logFile, 'a') as logger:
+        logger.write(str(dtnow) + ') ' + text + '\n')
 
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
-        print('Missing argument!')
+        log('Missing argument!')
         exit()
 
-    print('file: ' + sys.argv[1])
     filename = sys.argv[1]
-
     IngredientImport(filename)

@@ -20,7 +20,6 @@ def createDbConnector():
         exit()
 
 def importStore(filename):
-
     log("Open file")
 
     # Get all line from file
@@ -55,9 +54,6 @@ def handleReccords(shopInfo):
     if shopInfo[0] == '':
         return
 
-    log("- Handle Reccord")
-    log("Naam: " + shopInfo[0])
-
     # check if shop exists
     if not checkShopExists(shopInfo):
         addShop(shopInfo)
@@ -65,8 +61,6 @@ def handleReccords(shopInfo):
 
 # Check of shop/address exists
 def checkShopExists(shopInfo):
-    log("Check shop")
-
     query = "SELECT * FROM {ShopTable} WHERE name = '{Name}' AND StreetName = '{StreetName}' AND HouseNumber = '{HouseNumber}' AND Zipcode = '{Zipcode}'".format(
         ShopTable=shopTable,
         Name=shopInfo[0],
@@ -82,10 +76,8 @@ def checkShopExists(shopInfo):
 
     # Log result
     if len(result) == 0:
-        log("No shop found")
         return False
     else:
-        log("Shop found")
         return True
 
 
@@ -110,7 +102,7 @@ def addShop(shopInfo):
     mycursor = mydb.cursor()
     mycursor.execute(sql, val)
     mydb.commit()
-    log("Shop inserted, ID:", mycursor.lastrowid)
+    log("Shop inserted, ID: " + str(mycursor.lastrowid))
 
 def log(text):
     print(text)

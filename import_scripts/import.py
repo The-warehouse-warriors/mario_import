@@ -2,6 +2,9 @@ import os
 from datetime import datetime
 
 logFile = './logs/import_log.txt'
+tempFolder = './temp'
+logFolder = './logs'
+fileFolder = './files'
 
 def log(text):
     print(text)
@@ -11,6 +14,16 @@ def log(text):
 
 if __name__ == '__main__':
     log("--- Start importer ---\n")
+
+    # Create needed folders
+    if not os.path.exists(tempFolder):
+        os.makedirs(tempFolder)
+    if not os.path.exists(logFolder):
+        os.makedirs(logFolder)
+    if not os.path.exists(fileFolder):
+        os.makedirs(fileFolder)
+        log('missing import files!')
+        exit()
 
     log("Import ingredients")
     os.system("python .\Ingredienten\main.py .//files/Ingredients.csv")
