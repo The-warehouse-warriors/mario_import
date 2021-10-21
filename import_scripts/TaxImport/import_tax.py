@@ -3,6 +3,7 @@ import mysql.connector as msql
 from mysql.connector import Error
 import datetime
 import pandas as pd
+import configparser
 
 table = 'tax'
 user = "System"
@@ -12,22 +13,26 @@ endtime = datetime
 processtime = datetime
 logFile = './logs/ingredients_log.txt'
 
-try:
-    mariosDB = msql.connect(
-        host="localhost",
-        user="root",
-        password="-",
-        database="marios_pizza")
+# Create connector for later use
+def createDbConnector():
+    try:
+        global mariosDB
+        mariosDB = msql.connect(
+            host = dbHost,
+            user = dbUser,
+            password = dbPassword,
+            database = dbTable
+        )
 
-    if mariosDB.is_connected():
+        if mariosDB.is_connected():
+            global cursor
+            cursor = mariosDB.cursor()
+            cursor.execute("select database();")
+            record = cursor.fetchone()
+            print('Connected to database: ', record)
 
-        cursor = mariosDB.cursor()
-        cursor.execute("select database();")
-        record = cursor.fetchone()
-        print('Connected to database: ', record)
-
-except Error as e:
-    print('--- Error while connecting to database ---', e)
+    except Error as e:
+        print('--- Error while connecting to database ---', e)
 
 def removeChars(text):
     charactersToRemove = "!()@€[], '-"
@@ -41,6 +46,7 @@ def checkTax(tax):
         Tax=tax
     )
 
+    cursor = mariosDB.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
 
@@ -87,7 +93,7 @@ def taxImport(filename):
     endtime = datetime.datetime.now()
     processtime = endtime-starttime
     log("-- End import tax--")
-    log("Total time consumed: ", processtime)
+    log("Total time consumed: " + str(processtime))
 
 
 def log(text):
@@ -96,11 +102,35 @@ def log(text):
     with open(logFile, 'a') as logger:
         logger.write(str(dtnow) + ') ' + text + '\n')
 
+
+# Read config values from file into vars
+def setConfig():  
+
+    # Read from config.ini
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    # declare global vars
+    global dbHost
+    global dbTable
+    global dbUser
+    global dbPassword
+
+    # set theses vars with the values
+    dbHost = config.get('Database', 'dbHost')
+    dbTable = config.get('Database', 'dbTable')
+    dbUser = config.get('Database', 'dbUser')
+    dbPassword = config.get('Database', 'dbPassword')
+
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
         log('Missing argument!')
         exit()
+
+    setConfig()
+    
+    createDbConnector()
 
     filename = sys.argv[1]
     taxImport(filename)

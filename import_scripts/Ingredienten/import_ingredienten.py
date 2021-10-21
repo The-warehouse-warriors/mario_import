@@ -3,6 +3,8 @@ import mysql.connector as msql
 from mysql.connector import Error
 import datetime
 import pandas as pd
+import configparser
+
 
 table = 'ingredienten'
 user = "System"
@@ -12,22 +14,25 @@ endtime = datetime
 processtime = datetime
 logFile = './logs/ingredients_log.txt'
 
-try:
-    mariosDB = msql.connect(
-        host="localhost",
-        user="root",
-        password="-",
-        database="marios_pizza")
+def createDbConnector():
+    try:
+        global mariosDB
+        mariosDB = msql.connect(
+            host = dbHost,
+            user = dbUser,
+            password = dbPassword,
+            database = dbTable
+        )
 
-    if mariosDB.is_connected():
+        if mariosDB.is_connected():
+            global cursor
+            cursor = mariosDB.cursor()
+            cursor.execute("select database();")
+            record = cursor.fetchone()
+            print('Connected to database: ', record)
 
-        cursor = mariosDB.cursor()
-        cursor.execute("select database();")
-        record = cursor.fetchone()
-        print('Connected to database: ', record)
-
-except Error as e:
-    print('--- Error while connecting to database ---', e)
+    except Error as e:
+        print('--- Error while connecting to database ---', e)
 
 
 def removeCharInName(text):
@@ -55,6 +60,7 @@ def CheckIngredientExists(ingredient):
         IngredientName=ingredient
     )
 
+    cursor = mariosDB.cursor()
     cursor.execute(sql)
     result = cursor.fetchall()
 
@@ -113,7 +119,7 @@ def IngredientImport(filename):
     endtime = datetime.datetime.now()
     processtime = endtime-starttime
     log("-- End import ingredients--")
-    log("Total import time: ", processtime)
+    log("Total import time: " +  str(processtime))
 
 def log(text):
     print(text)
@@ -121,11 +127,31 @@ def log(text):
     with open(logFile, 'a') as logger:
         logger.write(str(dtnow) + ') ' + text + '\n')
 
+def setConfig():  
+
+    # read config and set values
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    global dbHost
+    global dbTable
+    global dbUser
+    global dbPassword
+
+    dbHost = config.get('Database', 'dbHost')
+    dbTable = config.get('Database', 'dbTable')
+    dbUser = config.get('Database', 'dbUser')
+    dbPassword = config.get('Database', 'dbPassword')
+
 if __name__ == '__main__':
 
     if len(sys.argv) < 2:
         log('Missing argument!')
         exit()
+
+    setConfig()
+
+    createDbConnector()
 
     filename = sys.argv[1]
     IngredientImport(filename)

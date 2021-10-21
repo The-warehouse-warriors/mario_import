@@ -24,10 +24,15 @@ if __name__ == '__main__':
         os.makedirs(fileFolder)
         log('missing import files!')
         exit()
+        
+
+    log("Import Tax")
+    os.system("python .\TaxImport\import_tax.py .//files/tax_import.csv")
+    log("Done with Tax, view tax_log.txt")
 
     log("Import ingredients")
-    os.system("python .\Ingredienten\main.py .//files/Ingredients.csv")
-    log("Done with shops, view xxxx")
+    os.system("python .\Ingredienten\import_ingredienten.py .//files/Extra_Ingredienten.csv")
+    log("Done with ingredients, view ingredients_log.txt")
 
     log("Import shops")
     os.system("python .\shops\import_shops.py .//files/WinkelsMario.txt")
