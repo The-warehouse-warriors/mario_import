@@ -5,6 +5,7 @@ from datetime import datetime
 import time
 import sys
 import pandas as pd
+import configparser
 
 # Create needed Vars
 AccessMunicipalityTable = "GEMEENTEN"
@@ -13,27 +14,25 @@ logFile = './logs/zipcode_log.txt'
 tempCsv = './temp/tempZipcode.csv'
 
 # Database vars
-dbUser = 'admin'
-dbPassword = '<nope>'
 SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 SQLtempZipcodeTable = 'tempzipcodes'
-SQLUri = 'mysql+pymysql://%s:%s@localhost/marios_pizza' % (dbUser, dbPassword)
-
 
 
 # Create connector for later use
 def createDbConnector():
+
     try:
+   
         global mydb
         mydb = mysql.connector.connect(
-            host="localhost",
-            user=dbUser,
-            password=dbPassword,
-            database="marios_pizza"
+            host = "localhost",
+            user = dbUser,
+            password = dbPassword,
+            database = dbTable
         )
     except:
-        log("!! MySQL error!")
+        log("!! MySQL error!!")
         exit()
 
 # Import given file into database
@@ -201,6 +200,9 @@ def bulkImport():
         return 
     
     try:
+        # Create connection
+        SQLUri = 'mysql+pymysql://%s:%s@localhost/%s' % (dbUser, dbPassword, dbTable)
+
         # Import csv to sql with pandas
         df = pd.read_csv(tempCsv)
         
@@ -240,9 +242,25 @@ def log(text):
         logger.write(str(dtnow) + ') ' + str(text) + '\n')
 
 
+def setConfig():  
+
+    # read config and set values
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    global dbTable
+    global dbUser
+    global dbPassword
+
+    dbTable = config.get('Database','dbTable')
+    dbUser = config.get('Database','dbUser')
+    dbPassword = config.get('Database','dbPassword')
+
 # Main function, called on start
 if __name__ == '__main__':
     log("--- START import zipcode ---")
+
+    setConfig()
 
     # Set start time
     start = time.time()
