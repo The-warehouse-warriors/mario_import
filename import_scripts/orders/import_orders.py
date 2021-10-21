@@ -10,8 +10,8 @@ extendedLogging = 0
 skipFirstRows = 4
 logFile = './logs/order_log.txt'
 tempCsv = './temp/ordersModified.csv'
-dbUser = 'admin'
-dbPassword = 'RBNYFT9o34fgCh0r6'
+dbUser = 'root'
+dbPassword = 'toor'
 SQLUri = 'mysql+pymysql://%s:%s@localhost/marios_pizza' % (dbUser, dbPassword)
 SQLOrderTable = 'marioorderdata01'
 
@@ -44,6 +44,11 @@ def importOrder(filename):
         # Replace all NAN elements in columns
         cols = ['Winkelnaam','Klantnaam','TelefoonNr','Email','Adres','Woonplaats','Besteldatum','AfleverType','AfleverDatum','AfleverMoment']
         df[cols] = df[cols].ffill()
+
+        header_list = ['WinkelID','Winkelnaam','CustomerID','Klantnaam','TelefoonNr','Email','AddressID','Adres','Woonplaats','OrderID','Besteldatum','DeliveryTypeID','AfleverType','AfleverDatum','AfleverMoment','Product','PizzaBodem','PizzaSaus','Prijs','Bezorgkosten','Aantal','Extra IngrediÃ«nten','Prijs Extra IngrediÃ«nten','Regelprijs','Totaalprijs','CouponID','Gebruikte Coupon','Coupon Korting','Te Betalen']
+
+        # Adding extra columns
+        df = df.reindex(columns=header_list)
 
         # Export DataFrame, empty rows are deleted
         df.to_csv(tempCsv, sep=';', encoding='utf-8')
