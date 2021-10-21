@@ -18,21 +18,19 @@ SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 SQLtempZipcodeTable = 'tempzipcodes'
 
-
 # Create connector for later use
 def createDbConnector():
 
-    try:
-   
+    try:   
         global mydb
         mydb = mysql.connector.connect(
-            host = "localhost",
+            host = dbHost,
             user = dbUser,
             password = dbPassword,
             database = dbTable
         )
     except:
-        log("!! MySQL error!!")
+        log("!! MySQL error !!")
         exit()
 
 # Import given file into database
@@ -201,7 +199,7 @@ def bulkImport():
     
     try:
         # Create connection
-        SQLUri = 'mysql+pymysql://%s:%s@localhost/%s' % (dbUser, dbPassword, dbTable)
+        SQLUri = 'mysql+pymysql://%s:%s@%s/%s' % (dbUser, dbPassword, dbHost, dbTable)
 
         # Import csv to sql with pandas
         df = pd.read_csv(tempCsv)
@@ -222,6 +220,7 @@ def bulkImport():
 # to handle the imported temp zipcodes
 def executeZipcodeSP():
     try:
+        log('call ImportTempZipcodes')
         # Create and execute query
         sql = "call ImportTempZipcodes();"
         mycursor = mydb.cursor()
@@ -242,19 +241,24 @@ def log(text):
         logger.write(str(dtnow) + ') ' + str(text) + '\n')
 
 
+# Read config values from file into vars
 def setConfig():  
 
-    # read config and set values
+    # Read from config.ini
     config = configparser.ConfigParser()
     config.read('config.ini')
 
+    # declare global vars
+    global dbHost
     global dbTable
     global dbUser
     global dbPassword
 
-    dbTable = config.get('Database','dbTable')
-    dbUser = config.get('Database','dbUser')
-    dbPassword = config.get('Database','dbPassword')
+    # set theses vars with the values
+    dbHost = config.get('Database', 'dbHost')
+    dbTable = config.get('Database', 'dbTable')
+    dbUser = config.get('Database', 'dbUser')
+    dbPassword = config.get('Database', 'dbPassword')
 
 # Main function, called on start
 if __name__ == '__main__':

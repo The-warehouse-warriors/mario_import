@@ -2,6 +2,7 @@ import mysql.connector
 from datetime import datetime
 import re
 import sys
+import configparser
 
 shopTable = 'shop'
 logFile = './logs/shops_log.txt'
@@ -10,10 +11,10 @@ def createDbConnector():
     try:
         global mydb
         mydb = mysql.connector.connect(
-            host="localhost",
-            user="admin",
-            password="<nope>",
-            database="marios_pizza"
+            host = dbHost,
+            user = dbUser,
+            password = dbPassword,
+            database = dbTable
         )
     except:
         log("! MySQL error !")
@@ -110,8 +111,26 @@ def log(text):
     with open(logFile, 'a') as logger:
         logger.write(str(dtnow) + ') ' + text + '\n')
 
+def setConfig():  
+
+    # read config and set values
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    global dbHost
+    global dbTable
+    global dbUser
+    global dbPassword
+
+    dbHost = config.get('Database', 'dbHost')
+    dbTable = config.get('Database', 'dbTable')
+    dbUser = config.get('Database', 'dbUser')
+    dbPassword = config.get('Database', 'dbPassword')
+
 if __name__ == '__main__':
     log("--- Start importer ---")
+    
+    setConfig()
     
     createDbConnector()
 
