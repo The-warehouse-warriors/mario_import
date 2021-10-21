@@ -5,6 +5,7 @@ from datetime import datetime
 import time
 import sys
 import pandas as pd
+import configparser
 
 # Create needed Vars
 AccessMunicipalityTable = "GEMEENTEN"
@@ -13,27 +14,23 @@ logFile = './logs/zipcode_log.txt'
 tempCsv = './temp/tempZipcode.csv'
 
 # Database vars
-dbUser = 'admin'
-dbPassword = '<nope>'
 SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 SQLtempZipcodeTable = 'tempzipcodes'
-SQLUri = 'mysql+pymysql://%s:%s@localhost/marios_pizza' % (dbUser, dbPassword)
-
-
 
 # Create connector for later use
 def createDbConnector():
-    try:
+
+    try:   
         global mydb
         mydb = mysql.connector.connect(
-            host="localhost",
-            user=dbUser,
-            password=dbPassword,
-            database="marios_pizza"
+            host = dbHost,
+            user = dbUser,
+            password = dbPassword,
+            database = dbTable
         )
     except:
-        log("!! MySQL error!")
+        log("!! MySQL error !!")
         exit()
 
 # Import given file into database
@@ -201,6 +198,9 @@ def bulkImport():
         return 
     
     try:
+        # Create connection
+        SQLUri = 'mysql+pymysql://%s:%s@%s/%s' % (dbUser, dbPassword, dbHost, dbTable)
+
         # Import csv to sql with pandas
         df = pd.read_csv(tempCsv)
         
@@ -220,6 +220,7 @@ def bulkImport():
 # to handle the imported temp zipcodes
 def executeZipcodeSP():
     try:
+        log('call ImportTempZipcodes')
         # Create and execute query
         sql = "call ImportTempZipcodes();"
         mycursor = mydb.cursor()
@@ -240,9 +241,30 @@ def log(text):
         logger.write(str(dtnow) + ') ' + str(text) + '\n')
 
 
+# Read config values from file into vars
+def setConfig():  
+
+    # Read from config.ini
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+
+    # declare global vars
+    global dbHost
+    global dbTable
+    global dbUser
+    global dbPassword
+
+    # set theses vars with the values
+    dbHost = config.get('Database', 'dbHost')
+    dbTable = config.get('Database', 'dbTable')
+    dbUser = config.get('Database', 'dbUser')
+    dbPassword = config.get('Database', 'dbPassword')
+
 # Main function, called on start
 if __name__ == '__main__':
     log("--- START import zipcode ---")
+
+    setConfig()
 
     # Set start time
     start = time.time()
