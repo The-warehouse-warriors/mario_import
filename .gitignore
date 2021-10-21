@@ -20,5 +20,6 @@ import_scripts/.idea/inspectionProfiles/profiles_settings.xml
 
 import_scripts/temp/tempZipcode.csv
 
-import_scripts/files/
->>>>>>> 8f68d1b4698b0bd853fbd1194ecda3c1ab0a0594
+import_scripts/files/**
+
+import_scripts/temp/**

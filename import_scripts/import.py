@@ -36,3 +36,11 @@ if __name__ == '__main__':
     log("Import zipcodes")
     os.system("python .\zipcodes\import_zipcodes.py .//files/Postcode_tabel.mdb")
     log("Done with shops, view zipcode_log.txt")
+
+    log("Import orders")
+    os.system("python .\orders\import_orders.py .//files/MarioOrderData01_10000.csv")
+    #os.system("python .\orders\import_orders.py .//files/MarioOrderData02_10000.csv")
+    #os.system("python .\orders\import_orders.py .//files/MarioOrderData03_10000.csv")
+    #os.system("python .\orders\import_orders.py .//files/MarioOrderData04_10000.csv")
+    log("Done with orders, view orders-log.txt")
+
