@@ -45,14 +45,50 @@
 #SET FOREIGN_KEY_CHECKS=1;
 #
 
+#SET FOREIGN_KEY_CHECKS=0;   
+#LOAD DATA INFILE 'C:/Fontys/Code/exports/Ingredienten.csv'
+#	INTO TABLE marios_pizza.ingredient 
+#	FIELDS TERMINATED BY ','
+#	LINES TERMINATED BY '\n'
+#   IGNORE 1 LINES
+#   ;
+#SET FOREIGN_KEY_CHECKS=1;
+
+#LOAD DATA INFILE 'C:/Fontys/Code/exports/tax.csv'
+#	INTO TABLE marios_pizza.tax 
+#	FIELDS TERMINATED BY ','
+#	LINES TERMINATED BY '\n'
+#   IGNORE 1 LINES
+#   ;
+
+# LOAD temp data into pizzaBottomType table
+CALL proc_Fill_pizzaBottomType_Table();
+
+# LOAD temp data into pizzaBottom table
+CALL proc_Fill_pizzaBottom();
+
+# LOAD temp data into category
+CALL proc_Fill_category();
+
+# LOAD temp data into subcategory
+CALL proc_Fill_subcategory();
+
+# LOAD temp data into sauce
+CALL proc_Fill_sauce();
+
+# LOAD temp data into pizza
+CALL `proc_Fill_pizza`();
+
+# LOAD temp data into pizza_ingredient
+CALL `proc_Fill_pizza_ingredient`();
+
+
 
 SET @startOver = 0;
 SET @truncateOnly = 1;
 
+# Clearing tables
 CALL `proc_truncate_partial_tables`();
-
-# Clear table
-TRUNCATE marios_pizza.marioorderdata01;
 
 # LOAD CSV File in temp table
 LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified.csv'
