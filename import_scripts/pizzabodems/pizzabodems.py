@@ -14,7 +14,7 @@ def createDbConnector():
         global mydb
         mydb = mysql.connector.connect(
         # mydb = pymysql.connect(
-            host='localhost',
+            host= 'localhost',
             port='330',
             user='root',
             password='televisie',
@@ -46,7 +46,7 @@ def fillTable():
         print(e)
 
 def callProc():
-    cursor.callproc('fill_pizzabottom')
+    cursor.callproc('proc_fill_pizzabottom')
 
 createDbConnector()
 createTable()
