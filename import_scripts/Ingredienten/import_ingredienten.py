@@ -36,7 +36,7 @@ def createDbConnector():
 
 
 def removeCharInName(text):
-    characters_to_remove_in_name = "!()@€[], '"
+    characters_to_remove_in_name = "!()@€[],'"
     for ch in characters_to_remove_in_name:
         text = text.replace(ch, "")
     return text
