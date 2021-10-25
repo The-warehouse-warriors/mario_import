@@ -6,16 +6,20 @@ BEGIN
     DECLARE _description varchar(254);
     DECLARE _price decimal(7,3);
     DECLARE _available tinyint;
-	DECLARE db_cursor CURSOR FOR SELECT ID, naam, diameter, omschrijving, toeslag, beschikbaar FROM temporarypizzabottoms left join pizzabottom ON temporarypizzabottoms.naam = pizzabottom.Name;
+    DECLARE finished INTEGER DEFAULT 0;
+	DECLARE cur CURSOR FOR SELECT pb.ID, tmp.naam, tmp.diameter, tmp.omschrijving, tmp.toeslag, tmp.beschikbaar FROM temporarypizzabottoms AS tmp left join pizzabottom AS pb ON tmp.naam = pb.Name;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
     
-    SELECT CONCAT('Variables declared: ', db_cursor);
-    
-    OPEN db_cursor;
-    WHILE(db_cursor != NULL)
-    
-		DO
-        SELECT('Entered While loop');
-		FETCH FROM db_cursor INTO _ID, _name, _size, _description, _price, _available;
+    OPEN cur;
+
+    getIdJoin: LOOP
+    #WHILE(cur != NULL)
+		#DO
+        #SELECT('Entered While loop');
+		FETCH FROM cur INTO _ID, _name, _size, _description, _price, _available;
+        IF finished = 1 
+			THEN LEAVE getIdJoin;
+        END IF;
 		IF  _ID = NULL
 			THEN
 				CALL add_pizzabottom(_name, _size, _description, _price, _available);
@@ -39,6 +43,7 @@ BEGIN
 				END IF;
 			END;
 		END IF;
-	END WHILE;
-    CLOSE db_cursor;
+     END LOOP getIdJoin;   
+	#END WHILE;
+    CLOSE cur;
 END
