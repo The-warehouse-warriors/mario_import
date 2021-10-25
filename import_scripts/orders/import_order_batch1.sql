@@ -82,6 +82,55 @@ CALL `proc_Fill_pizza`();
 # LOAD temp data into pizza_ingredient
 CALL `proc_Fill_pizza_ingredient`();
 
+# LOAD OverigeProducten
+TRUNCATE marios_pizza.mariooverigeproducten;
+
+LOAD DATA INFILE 'C:/Fontys/Code/MarioData/Overigeproducten.csv'
+	INTO TABLE marios_pizza.mariooverigeproducten 
+	FIELDS TERMINATED BY ';'
+	LINES TERMINATED BY '\n'
+   IGNORE 1 LINES
+   	(ID
+		,categorie
+		,categorieUnique
+		,categorieID
+		,subcategorie
+		,subcategorieUnique
+		,subcategorieID
+		,productnaam
+		,productnaamUnique
+		,productnaamID
+		,productomschrijving
+		,productomschrijvingFiltered
+		,prijs
+		,@prijsDecimal
+		,spicy
+		,spicyTrueFalse
+		,vegetarisch
+		,vegetarischTrueFalse
+		)
+		SET prijsDecimal=if(@prijsDecimal = '', NULL, @prijsDecimal)
+	;
+
+# Update categoryID in table mariooverigeproducten
+CALL `proc_update_CategoryID_mariooverigeproducten` ();
+
+# Update subcategoryID in table mariooverigeproducten
+CALL `proc_update_subcategorieID_mariooverigeproducten`();
+
+# Derive Nonpizza products from mariooverigeproducten
+CALL `proc_derive_Nonpizza_products_from_mariooverigeproducten`();
+
+# Update productID in table mariooverigeproducten
+CALL `proc_update_productnaamID_from_mariooverigeproducten` ();
+
+# Update StoreID     # 9.7 sec
+CALL `proc_update_WinkelID`();
+
+# Empty customer table, only needed for re-imports and testing
+	SET FOREIGN_KEY_CHECKS=0;
+	TRUNCATE marios_pizza.customer;
+	SET FOREIGN_KEY_CHECKS=1;
 
 
 SET @startOver = 0;
@@ -91,7 +140,7 @@ SET @truncateOnly = 1;
 CALL `proc_truncate_partial_tables`();
 
 # LOAD CSV File in temp table
-LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified.csv'
+LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified1.csv'
 	INTO TABLE marios_pizza.marioorderdata01
 	FIELDS TERMINATED BY ';' 
 	LINES TERMINATED BY '\n'
@@ -99,7 +148,7 @@ LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified.csv'
 	(`MyUnknownColumn`, @WinkelID, `Winkelnaam`, @CustomerID, `Klantnaam`
         , `TelefoonNr`, `Email`, @AddressID, `Adres`, `Woonplaats`
         , @OrderID, `Besteldatum`, @DeliveryTypeID, `AfleverType`
-        , `AfleverDatum`, `AfleverMoment`, @ProductID, `Product`, @PizzaBodemID, `PizzaBodem`
+        , `AfleverDatum`, `AfleverMoment`, @ProductID, @nonProductID, `Product`, @PizzaBodemID, `PizzaBodem`
         , @PizzaSausID, `PizzaSaus`, `Prijs`, `Bezorgkosten`, @BezorgkostenDecimal
         , `Aantal`, `Extra IngrediÃƒÂ«nten`, `Prijs Extra IngrediÃƒÂ«nten`
         , `Regelprijs`, @RegelprijsDecimal, `Totaalprijs`, @TotaalprijsDecimal
@@ -116,21 +165,112 @@ LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified.csv'
     , TeBetalenDecimal=if(@TeBetalenDecimal = '', NULL, @NULL)
     , TotaalprijsDecimal=if(@TotaalprijsDecimal = '', NULL, @TotaalprijsDecimal)
     , ProductID=if(@ProductID = '', NULL, @ProductID)
+    , nonProductID=if(@nonProductID = '', NULL, @nonProductID)
     , PizzaBodemID=if(@PizzaBodemID = '', NULL, @PizzaBodemID)
     , PizzaSausID=if(@PizzaSausID = '', NULL, @PizzaSausID)
     ;
 
+LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified2.csv'
+	INTO TABLE marios_pizza.marioorderdata01
+	FIELDS TERMINATED BY ';' 
+	LINES TERMINATED BY '\n'
+	IGNORE 1 LINES
+	(`MyUnknownColumn`, @WinkelID, `Winkelnaam`, @CustomerID, `Klantnaam`
+        , `TelefoonNr`, `Email`, @AddressID, `Adres`, `Woonplaats`
+        , @OrderID, `Besteldatum`, @DeliveryTypeID, `AfleverType`
+        , `AfleverDatum`, `AfleverMoment`, @ProductID, @nonProductID, `Product`, @PizzaBodemID, `PizzaBodem`
+        , @PizzaSausID, `PizzaSaus`, `Prijs`, `Bezorgkosten`, @BezorgkostenDecimal
+        , `Aantal`, `Extra IngrediÃƒÂ«nten`, `Prijs Extra IngrediÃƒÂ«nten`
+        , `Regelprijs`, @RegelprijsDecimal, `Totaalprijs`, @TotaalprijsDecimal
+        , @CouponID, `Gebruikte Coupon`,`Coupon Korting`, `Te Betalen`
+        , @TeBetalenDecimal)
+    set WinkelID=if(@WinkelID = '', NULL, @WinkelID)
+    , CustomerID=if(@CustomerID = '', NULL, @CustomerID)
+    , AddressID=if(@AddressID = '', NULL, @AddressID)
+    , OrderID=if(@OrderID = '', NULL, @OrderID)
+    , DeliveryTypeID=if(@DeliveryTypeID = '', NULL, @DeliveryTypeID)
+    , BezorgkostenDecimal=if(@BezorgkostenDecimal = '', NULL, @BezorgkostenDecimal)
+    , RegelprijsDecimal=if(@RegelprijsDecimal = '', NULL, @RegelprijsDecimal)
+    , CouponID=if(@CouponID = '', NULL, @CouponID)
+    , TeBetalenDecimal=if(@TeBetalenDecimal = '', NULL, @NULL)
+    , TotaalprijsDecimal=if(@TotaalprijsDecimal = '', NULL, @TotaalprijsDecimal)
+    , ProductID=if(@ProductID = '', NULL, @ProductID)
+    , nonProductID=if(@nonProductID = '', NULL, @nonProductID)
+    , PizzaBodemID=if(@PizzaBodemID = '', NULL, @PizzaBodemID)
+    , PizzaSausID=if(@PizzaSausID = '', NULL, @PizzaSausID)
+    ;
+
+LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified3.csv'
+	INTO TABLE marios_pizza.marioorderdata01
+	FIELDS TERMINATED BY ';' 
+	LINES TERMINATED BY '\n'
+	IGNORE 1 LINES
+	(`MyUnknownColumn`, @WinkelID, `Winkelnaam`, @CustomerID, `Klantnaam`
+        , `TelefoonNr`, `Email`, @AddressID, `Adres`, `Woonplaats`
+        , @OrderID, `Besteldatum`, @DeliveryTypeID, `AfleverType`
+        , `AfleverDatum`, `AfleverMoment`, @ProductID, @nonProductID, `Product`, @PizzaBodemID, `PizzaBodem`
+        , @PizzaSausID, `PizzaSaus`, `Prijs`, `Bezorgkosten`, @BezorgkostenDecimal
+        , `Aantal`, `Extra IngrediÃƒÂ«nten`, `Prijs Extra IngrediÃƒÂ«nten`
+        , `Regelprijs`, @RegelprijsDecimal, `Totaalprijs`, @TotaalprijsDecimal
+        , @CouponID, `Gebruikte Coupon`,`Coupon Korting`, `Te Betalen`
+        , @TeBetalenDecimal)
+    set WinkelID=if(@WinkelID = '', NULL, @WinkelID)
+    , CustomerID=if(@CustomerID = '', NULL, @CustomerID)
+    , AddressID=if(@AddressID = '', NULL, @AddressID)
+    , OrderID=if(@OrderID = '', NULL, @OrderID)
+    , DeliveryTypeID=if(@DeliveryTypeID = '', NULL, @DeliveryTypeID)
+    , BezorgkostenDecimal=if(@BezorgkostenDecimal = '', NULL, @BezorgkostenDecimal)
+    , RegelprijsDecimal=if(@RegelprijsDecimal = '', NULL, @RegelprijsDecimal)
+    , CouponID=if(@CouponID = '', NULL, @CouponID)
+    , TeBetalenDecimal=if(@TeBetalenDecimal = '', NULL, @NULL)
+    , TotaalprijsDecimal=if(@TotaalprijsDecimal = '', NULL, @TotaalprijsDecimal)
+    , ProductID=if(@ProductID = '', NULL, @ProductID)
+    , nonProductID=if(@nonProductID = '', NULL, @nonProductID)
+    , PizzaBodemID=if(@PizzaBodemID = '', NULL, @PizzaBodemID)
+    , PizzaSausID=if(@PizzaSausID = '', NULL, @PizzaSausID)
+    ;
+
+LOAD DATA INFILE 'C:/Fontys/Code/MarioOrderData01_Modified4.csv'
+	INTO TABLE marios_pizza.marioorderdata01
+	FIELDS TERMINATED BY ';' 
+	LINES TERMINATED BY '\n'
+	IGNORE 1 LINES
+	(`MyUnknownColumn`, @WinkelID, `Winkelnaam`, @CustomerID, `Klantnaam`
+        , `TelefoonNr`, `Email`, @AddressID, `Adres`, `Woonplaats`
+        , @OrderID, `Besteldatum`, @DeliveryTypeID, `AfleverType`
+        , `AfleverDatum`, `AfleverMoment`, @ProductID, @nonProductID, `Product`, @PizzaBodemID, `PizzaBodem`
+        , @PizzaSausID, `PizzaSaus`, `Prijs`, `Bezorgkosten`, @BezorgkostenDecimal
+        , `Aantal`, `Extra IngrediÃƒÂ«nten`, `Prijs Extra IngrediÃƒÂ«nten`
+        , `Regelprijs`, @RegelprijsDecimal, `Totaalprijs`, @TotaalprijsDecimal
+        , @CouponID, `Gebruikte Coupon`,`Coupon Korting`, `Te Betalen`
+        , @TeBetalenDecimal)
+    set WinkelID=if(@WinkelID = '', NULL, @WinkelID)
+    , CustomerID=if(@CustomerID = '', NULL, @CustomerID)
+    , AddressID=if(@AddressID = '', NULL, @AddressID)
+    , OrderID=if(@OrderID = '', NULL, @OrderID)
+    , DeliveryTypeID=if(@DeliveryTypeID = '', NULL, @DeliveryTypeID)
+    , BezorgkostenDecimal=if(@BezorgkostenDecimal = '', NULL, @BezorgkostenDecimal)
+    , RegelprijsDecimal=if(@RegelprijsDecimal = '', NULL, @RegelprijsDecimal)
+    , CouponID=if(@CouponID = '', NULL, @CouponID)
+    , TeBetalenDecimal=if(@TeBetalenDecimal = '', NULL, @NULL)
+    , TotaalprijsDecimal=if(@TotaalprijsDecimal = '', NULL, @TotaalprijsDecimal)
+    , ProductID=if(@ProductID = '', NULL, @ProductID)
+    , nonProductID=if(@nonProductID = '', NULL, @nonProductID)
+    , PizzaBodemID=if(@PizzaBodemID = '', NULL, @PizzaBodemID)
+    , PizzaSausID=if(@PizzaSausID = '', NULL, @PizzaSausID)
+    ;
+
+# setting ID correct
+SET @num := 0;
+UPDATE marios_pizza.marioorderdata01 
+	SET MyUnknownColumn = @num := (@num+1);
+
 # Create extra column WinkelID
-SELECT * FROM marios_pizza.marioorderdata01;
+SELECT * FROM marios_pizza.marioorderdata01
+WHERE ORDERID is null limit 10;
 
 # Update StoreID     # 9.7 sec
 CALL `proc_update_WinkelID`();
-
-# Empty customer table, only needed for re-imports and testing
-	SET FOREIGN_KEY_CHECKS=0;
-	TRUNCATE marios_pizza.customer;
-	SET FOREIGN_KEY_CHECKS=1;
-
 
 # Insert customers from order file, group by email and insert into customer table, unique on email address
 CALL `proc_Insert_New_Customers`();
@@ -165,6 +305,11 @@ CALL `proc_derive_Orders_From_MarioData`();
 # Update MarioOrderData with order ID
 CALL `proc_update_OrderID_on_MarioOrderData`();
 
+# Update productID in marioorderdata with PizzaIDs : Duration: 8.8s
+CALL `proc_update_ProductID_with_PizzaIDs_on_marioorderdata` ();
+
+# Update productID in marioorderdata with NonPizzaIDs : Duration: 5,234s
+CALL `proc_update_ProductID_with_NonPizzaIDs_on_marioorderdata`();
+
 # Derive order items from MarioOrderData
 CALL `proc_derive_OrderItems_From_OrderData`();
-
