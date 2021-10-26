@@ -89,7 +89,7 @@ def importFiles(folderPath):
                    'Extra Ingrediënten',
                    'Prijs Extra Ingrediënten', 'Regelprijs', 'RegelprijsDecimal', 'Totaalprijs', 'TotaalprijsDecimal',
                    'CouponID', 'Gebruikte Coupon',
-                   'Coupon Korting', 'Te Betalen', 'TeBetalenDecimal']
+                   'Coupon Korting', 'Te Betalen', 'TeBetalenDecimal', 'ErrorDetails']
     log('Extra columns are being added: {}'.format('\n'.join(header_list)))
 
     # Appending extra columns
@@ -122,7 +122,7 @@ def importFiles(folderPath):
     df.TotaalprijsDecimal = df.Totaalprijs.str.extract('(\d*\.\d+|\d+)', expand=True).astype(float)
 
     log('Exporting csv file, location: {}'.format(tempCsv))
-    df.to_csv(tempCsv, sep=';', encoding='utf-8', decimal=".")
+    df.to_csv(tempCsv, sep=';', encoding='utf-8', decimal=".", index_label='ID')
 
 
 def executeImportOrderDataSP():
@@ -191,7 +191,7 @@ def bulkImport():
     log("Done with CSV import")
 
 
-# check if m unicipality exists
+# Truncate table
 def truncateTable(tableName):
     try:
         # Create and execute query
@@ -210,6 +210,105 @@ def truncateTable(tableName):
     except pyodbc.Error as e:
         log(e)
     return False
+
+
+# Update storeID on MarioOrderData table
+def executeUpdateWinkelIDOnOrderDataSP():
+    try:
+        log('CALL `proc_update_WinkelID`();')
+        # Create and execute query
+        sql = "call proc_update_WinkelID();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+def checkIfDeliveryDateTimeAndOrderDataNotNull():
+    try:
+        # Create and execute query
+        query = "UPDATE marios_pizza.marioorderdata01 SET ErrorDetails = 'Incorrect Besteldatum, Afleverdatum or Aflevermoment' WHERE Besteldatum LIKE '%,%' OR AfleverDatum LIKE '%,%' OR AfleverMoment LIKE '%,%' OR AfleverMoment LIKE '%PM%' OR AfleverMoment LIKE '%AM%' OR AfleverMoment NOT LIKE '%:%' OR AfleverMoment IS NULL OR AfleverDatum IS NULL OR Besteldatum IS NULL;"
+
+        mycursor = mydb.cursor()
+        mycursor.execute(query)
+        result = mycursor.fetchall()
+
+        # Check if a result is returned
+        if len(result) == 0:
+            return False
+        else:
+            return True
+    except pyodbc.Error as e:
+        log(e)
+    return False
+
+
+def checkIfStoreIDisNotNull():
+    try:
+        # Create and execute query
+        query = "UPDATE marios_pizza.marioorderdata01 destTable SET ErrorDetails = 'No store found for this row' " \
+                "WHERE WinkelID IS NULL; "
+
+        mycursor = mydb.cursor()
+        mycursor.execute(query)
+        result = mycursor.fetchall()
+
+        # Check if a result is returned
+        if len(result) == 0:
+            return False
+        else:
+            return True
+    except pyodbc.Error as e:
+        log(e)
+    return False
+
+
+# Derive customers from orders
+def executeDeriveCustomersFromOrderDataSP():
+    try:
+        log('CALL `proc_derive_Customers_from_OrderData`();')
+        # Create and execute query
+        sql = "call proc_derive_Customers_from_OrderData();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+# Update order table with customerID
+def executeUpdateCustomerIDToOrderDataSP():
+    try:
+        log('CALL `proc_Update_Order_Customer_ID`();')
+        # Create and execute query
+        sql = "call proc_Update_Order_Customer_ID();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+# # Update customer address table with address from orderdata table, GROUP BY Woonplaats, Adres: 12 sec -> 0.2
+def executeDeriveCustomerAddressFromOrderDataSP():
+    try:
+        log('CALL `proc_insertCustomerAddress`();')
+        # Create and execute query
+        sql = "call proc_insertCustomerAddress();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
 
 
 # Main function, called on start
@@ -231,11 +330,29 @@ if __name__ == '__main__':
 
     # Select first param, and call main function
     folderPath = sys.argv[1]
-    importFiles(folderPath)
-    log('Truncating table')
-    truncateTable(SQLMarioOrderDataTable)
-    log('Bulk insert csv file {} into table {}'.format(tempCsv, SQLMarioOrderDataTable))
-    bulkImport()
+    #    importFiles(folderPath)
+    #    log('Truncating table')
+    #    truncateTable(SQLMarioOrderDataTable)
+    #    log('Bulk insert csv file {} into table {}'.format(tempCsv, SQLMarioOrderDataTable))
+    #    bulkImport()
+
+    # Filter evil stuff:
+    # checkIfDeliveryDateTimeAndOrderDataNotNull()
+
+    # Update storeID
+    # executeUpdateWinkelIDOnOrderDataSP()
+
+    # Verify if every order item has a store
+    # checkIfStoreIDisNotNull()
+
+    # Derive Customers from order data
+    # executeDeriveCustomersFromOrderDataSP()
+
+    # `proc_Update_Order_Customer_ID`(
+    # executeUpdateCustomerIDToOrderDataSP()
+
+    #
+    executeDeriveCustomerAddressFromOrderDataSP()
 
     # Final msg with total run time in seconds
     log('--- DONE import order data, took: {0:2f} seconds to run'.format(time.time() - start))
