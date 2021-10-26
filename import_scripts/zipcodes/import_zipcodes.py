@@ -18,7 +18,11 @@ SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 SQLtempZipcodeTable = 'tempzipcodes'
 
+<<<<<<< Updated upstream
 # Create connector for later use
+=======
+
+>>>>>>> Stashed changes
 def createDbConnector():
 
     try:   
@@ -174,9 +178,26 @@ def createTempZipcodeCsv(filename):
             data = [zipcode, breakpointStart, breakpointEnd, city, street, municipalityId, '', '']
             writer.writerow(data)
 
+<<<<<<< Updated upstream
         # Done with CSV creating
         f.close()      
         conn.close()
+=======
+            log("- " + str(i))
+
+            # Call SP to insert
+            addZipcode(
+                zipcode,
+                breakpointStart,
+                breakpointEnd,
+                city,
+                street,
+                municipalityId
+            )
+
+        log("Handled items : " + str(i))
+        log("Done import Municipality\n")
+>>>>>>> Stashed changes
 
         log("Added " + str(i) + " rows to temp file")
     except pyodbc.Error:
@@ -235,6 +256,7 @@ def executeZipcodeSP():
 def log(text):    
     print(text)
 
+<<<<<<< Updated upstream
     # Create a row in txt file with Datetime as prefix
     dtnow = datetime.now()
     with open(logFile, 'a') as logger:
@@ -243,6 +265,14 @@ def log(text):
 
 # Read config values from file into vars
 def setConfig():  
+=======
+
+# Insert data with Stored procedure
+
+
+def addZipcode(zipcode, breakpointStart, breakpointEnd, city, street, municipalityId):
+    # print("- Insert: " + zipcode)
+>>>>>>> Stashed changes
 
     # Read from config.ini
     config = configparser.ConfigParser()
@@ -266,8 +296,14 @@ if __name__ == '__main__':
 
     setConfig()
 
+<<<<<<< Updated upstream
     # Set start time
     start = time.time()
+=======
+
+if __name__ == '__main__':
+    log("--- Start importer ---")
+>>>>>>> Stashed changes
 
     # Check/create Mysql connector
     createDbConnector()
@@ -277,9 +313,14 @@ if __name__ == '__main__':
         log("!! Missing argument !!")
         exit()
 
+<<<<<<< Updated upstream
     # Select first param, and call main function
     filename = sys.argv[1]    
     importFile(filename)
 
     # Final msg with total run time in seconds
     log('--- DONE import zipcode, took: {0:2f} seconds to run'.format(time.time() - start))
+=======
+    filename = sys.argv[1]
+    importFile(filename)
+>>>>>>> Stashed changes
