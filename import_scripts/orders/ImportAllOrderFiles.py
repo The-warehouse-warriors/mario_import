@@ -16,6 +16,7 @@ extendedLogging = 0
 skipFirstRows = 4
 logFile = './logs/orderdata_log.txt'
 tempCsv = './temp/MarioOrderData.csv'
+global df
 
 # Database vars
 SQLMarioOrderDataTable = "marioorderdata01"
@@ -123,6 +124,21 @@ def importFiles(folderPath):
     log('Exporting csv file, location: {}'.format(tempCsv))
     df.to_csv(tempCsv, sep=';', encoding='utf-8', decimal=".")
 
+
+def executeImportOrderDataSP():
+    try:
+        log('call ImportTempZipcodes')
+        # Create and execute query
+        sql = "call ImportTempZipcodes();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
 # Read config values from file into vars
 def setConfig():
     # Read from config.ini
@@ -140,6 +156,60 @@ def setConfig():
     dbTable = config.get('Database', 'dbTable')
     dbUser = config.get('Database', 'dbUser')
     dbPassword = config.get('Database', 'dbPassword')
+
+
+def bulkImport():
+    # Truncate MarioOrderData first
+    try:
+        sql = "truncate marioorderdata01;"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("Truncated marioorderdata01")
+    except Exception as err:
+        log(err)
+        # Stop process on error
+        return
+
+    try:
+        # Create connection
+        SQLUri = 'mysql+pymysql://%s:%s@%s/%s' % (dbUser, dbPassword, dbHost, dbTable)
+
+        # Import csv to sql with pandas
+        dfCSV = pd.read_csv(tempCsv, sep=';', encoding='utf-8', decimal=".")
+
+        # Table name
+        # Connection uri
+        # Replace data
+        # Create no indexes
+        dfCSV.to_sql(SQLMarioOrderDataTable, con=SQLUri, if_exists='replace', index=False)
+    except Exception as err:
+        log(err)
+        # Stop process on error
+        return
+
+    log("Done with CSV import")
+
+
+# check if m unicipality exists
+def truncateTable(tableName):
+    try:
+        # Create and execute query
+        query = "TRUNCATE marios_pizza.{Table}".format(
+            Table=tableName
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute(query)
+        result = mycursor.fetchall()
+
+        # Check if a result is returned
+        if len(result) == 0:
+            return False
+        else:
+            return True
+    except pyodbc.Error as e:
+        log(e)
+    return False
 
 
 # Main function, called on start
@@ -162,6 +232,10 @@ if __name__ == '__main__':
     # Select first param, and call main function
     folderPath = sys.argv[1]
     importFiles(folderPath)
+    log('Truncating table')
+    truncateTable(SQLMarioOrderDataTable)
+    log('Bulk insert csv file {} into table {}'.format(tempCsv, SQLMarioOrderDataTable))
+    bulkImport()
 
     # Final msg with total run time in seconds
     log('--- DONE import order data, took: {0:2f} seconds to run'.format(time.time() - start))
