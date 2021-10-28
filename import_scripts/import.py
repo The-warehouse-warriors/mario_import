@@ -27,25 +27,22 @@ if __name__ == '__main__':
         
 
     log("Import Tax")
-    os.system("python .\TaxImport\import_tax.py .//files/tax_import.csv")
+    # os.system("python .\TaxImport\import_tax.py .//files/tax_import.csv")
     log("Done with Tax, view tax_log.txt")
 
     log("Import ingredients")
-    os.system("python .\Ingredienten\import_ingredienten.py .//files/Extra_Ingredienten.csv")
+    # os.system("python .\Ingredienten\import_ingredienten.py .//files/Extra_Ingredienten.csv")
     log("Done with ingredients, view ingredients_log.txt")
 
     log("Import shops")
-    os.system("python .\shops\import_shops.py .//files/WinkelsMario.txt")
+    # os.system("python .\shops\import_shops.py .//files/WinkelsMario.txt")
     log("Done with shops, view shops_log.txt")
 
     log("Import zipcodes")
-    os.system("python .\zipcodes\import_zipcodes.py .//files/Postcode_tabel.mdb")
+    # os.system("python .\zipcodes\import_zipcodes.py .//files/Postcode_tabel.mdb")
     log("Done with shops, view zipcode_log.txt")
 
     log("Import orders")
     os.system("python .\orders\import_orders.py .//files/MarioOrderData01_10000.csv")
-    #os.system("python .\orders\import_orders.py .//files/MarioOrderData02_10000.csv")
-    #os.system("python .\orders\import_orders.py .//files/MarioOrderData03_10000.csv")
-    #os.system("python .\orders\import_orders.py .//files/MarioOrderData04_10000.csv")
     log("Done with orders, view orders-log.txt")
 
