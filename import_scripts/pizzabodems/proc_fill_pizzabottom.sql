@@ -25,21 +25,22 @@ BEGIN
 				CALL add_pizzabottom(_name, _size, _description, _price, _available);
 		ELSE 
 			BEGIN
-				IF _size != pizzabottom.Size
+				CALL proc_return_pizzabottom_values(_ID, @name, @size, @description, @price, @active);
+				IF _size != @size
 					THEN 
-						UPDATE pizzabottom SET Size = _size,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where pizzabottom.ID = _ID;
+						UPDATE pizzabottom SET Size = _size,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
-                IF _description != pizzabottom.Description
+                IF _description != @description
 					THEN 
-						UPDATE pizzabottom SET Description = _description,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where pizzabottom.ID = _ID;
+						UPDATE pizzabottom SET Description = _description,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
-				IF _price != pizzabottom.Price
+				IF _price != @price
 					THEN 
-						UPDATE pizzabottom SET Price = _price,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where pizzabottom.ID = _ID;
+						UPDATE pizzabottom SET Price = _price,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
-				IF _available != pizzabottom.Available
+				IF _available != @active
 					THEN 
-						UPDATE pizzabottom SET Available = _available,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where pizzabottom.ID = _ID;
+						UPDATE pizzabottom SET Available = _available,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
 			END;
 		END IF;
