@@ -407,7 +407,7 @@ def executeStoredProcedure(storedProcedure):
         mycursor = mydb.cursor()
         mycursor.execute(sql)
         mydb.commit()
-        log("SP called")
+        log("SP {sProcedure} called".format(sProcedure=storedProcedure))
     except Exception as err:
         log(err)
         return
@@ -432,38 +432,38 @@ if __name__ == '__main__':
 
     # Select first param, and call main function
     folderPath = sys.argv[1]
-    #    importFiles(folderPath)
-    #    log('Truncating table')
-    #    truncateTable(SQLMarioOrderDataTable)
-    #    log('Bulk insert csv file {} into table {}'.format(tempCsv, SQLMarioOrderDataTable))
-    #    bulkImport()
+    importFiles(folderPath)
+    log('Truncating table')
+    truncateTable(SQLMarioOrderDataTable)
+    log('Bulk insert csv file {} into table {}'.format(tempCsv, SQLMarioOrderDataTable))
+    bulkImport()
 
     # Filter evil stuff:
-    # checkIfDeliveryDateTimeAndOrderDataNotNull()
+    checkIfDeliveryDateTimeAndOrderDataNotNull()
 
     # Update storeID
-    # executeUpdateWinkelIDOnOrderDataSP()
+    executeUpdateWinkelIDOnOrderDataSP()
 
     # Verify if every order item has a store
-    # checkIfStoreIDisNotNull()
+    checkIfStoreIDisNotNull()
 
     # Derive Customers from order data
-    # executeDeriveCustomersFromOrderDataSP()
+    executeDeriveCustomersFromOrderDataSP()
 
     # `proc_Update_Order_Customer_ID`(
-    # executeUpdateCustomerIDToOrderDataSP()
+    executeUpdateCustomerIDToOrderDataSP()
 
     #
-    # executeDeriveCustomerAddressFromOrderDataSP()
+    executeDeriveCustomerAddressFromOrderDataSP()
 
     #
-    # executeDeriveCouponsFromOrderDataSP()
+    executeDeriveCouponsFromOrderDataSP()
 
     #
-    # executeUpdateCouponIDOnOrderDataSP()
+    executeUpdateCouponIDOnOrderDataSP()
 
     #
-    # executeDeriveDeliverTypeOrderDataSP()
+    executeDeriveDeliverTypeOrderDataSP()
 
     # `proc_update_DeliverTypeID_on_OrderData`()
     executeUpdateDeliverTypeIDOrderDataSP()
@@ -480,8 +480,26 @@ if __name__ == '__main__':
     # Update productID in marioorderdata with NonPizzaIDs : Duration: 5,234s
     executeStoredProcedure('proc_update_ProductID_with_NonPizzaIDs_on_marioorderdata')
 
-    # Update PizzaBottomID in marioorderdata with NonPizzaIDs : Duration: 5,234s
-    executeStoredProcedure('proc_update_ProductID_with_NonPizzaIDs_on_marioorderdata')
+    # Update PizzaBottomID in marioorderdata : Duration: s
+    executeStoredProcedure('proc_update_PizzaBodemID_on_marioorderdata')
+
+    # Update PizzaSausID in marioorderdata : Duration: s
+    executeStoredProcedure('proc_update_PizzaSausID_on_marioorderdata')
+
+    # Update  in marioorderdata : Duration: s
+    executeStoredProcedure()
+
+    # Update  in marioorderdata : Duration: s
+    executeStoredProcedure()
+
+    # Update  in marioorderdata : Duration: s
+    executeStoredProcedure()
+
+    # Update  in marioorderdata : Duration: s
+    executeStoredProcedure()
+
+    # Update  in marioorderdata : Duration: s
+    executeStoredProcedure()
 
     # Final msg with total run time in seconds
     log('--- DONE import order data, took: {0:2f} seconds to run'.format(time.time() - start))
