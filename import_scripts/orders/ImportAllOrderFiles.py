@@ -296,12 +296,114 @@ def executeUpdateCustomerIDToOrderDataSP():
         return
 
 
-# # Update customer address table with address from orderdata table, GROUP BY Woonplaats, Adres: 12 sec -> 0.2
+# Update customer address table with address from orderdata table, GROUP BY Woonplaats, Adres: 12 sec -> 0.2
 def executeDeriveCustomerAddressFromOrderDataSP():
     try:
         log('CALL `proc_insertCustomerAddress`();')
         # Create and execute query
         sql = "call proc_insertCustomerAddress();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+# Update customer address table with address from orderdata table, GROUP BY Woonplaats, Adres: 12 sec -> 0.2
+def executeDeriveCouponsFromOrderDataSP():
+    try:
+        log('CALL `proc_derive_Coupons_From_OrderData_And_Insert`();')
+        # Create and execute query
+        sql = "call proc_derive_Coupons_From_OrderData_And_Insert();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+# Update customer address table with address from orderdata table, GROUP BY Woonplaats, Adres: 12 sec -> 0.2
+def executeUpdateCouponIDOnOrderDataSP():
+    try:
+        log('CALL `proc_update_CouponID_on_MarioOrderData`();')
+        # Create and execute query
+        sql = "call proc_update_CouponID_on_MarioOrderData();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+# Update customer address table with address from orderdata table, GROUP BY Woonplaats, Adres: 12 sec -> 0.2
+def executeDeriveDeliverTypeOrderDataSP():
+    try:
+        log('CALL proc_derive_DeliverType_from_OrderData();')
+        # Create and execute query
+        sql = "call proc_derive_DeliverType_from_OrderData();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+# Update customer address table with address from orderdata table, GROUP BY Woonplaats, Adres: 12 sec -> 0.2
+def executeUpdateDeliverTypeIDOrderDataSP():
+    try:
+        log('CALL proc_update_DeliverTypeID_on_OrderData();')
+        # Create and execute query
+        sql = "call proc_update_DeliverTypeID_on_OrderData();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+def executeDeriveOrdersOrderDataSP():
+    try:
+        log('CALL proc_derive_Orders_From_MarioData();')
+        # Create and execute query
+        sql = "call proc_derive_Orders_From_MarioData();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+def executeUpdateOrderIDonOrderDataSP():
+    try:
+        log('CALL proc_update_OrderID_on_MarioOrderData();')
+        # Create and execute query
+        sql = "call proc_update_OrderID_on_MarioOrderData();"
+        mycursor = mydb.cursor()
+        mycursor.execute(sql)
+        mydb.commit()
+        log("SP called")
+    except Exception as err:
+        log(err)
+        return
+
+
+def executeStoredProcedure(storedProcedure):
+    try:
+        log('CALL {sProcedure}();'.format(sProcedure=storedProcedure))
+        # Create and execute query
+        sql = "call {sProcedure}();".format(sProcedure=storedProcedure)
         mycursor = mydb.cursor()
         mycursor.execute(sql)
         mydb.commit()
@@ -352,7 +454,34 @@ if __name__ == '__main__':
     # executeUpdateCustomerIDToOrderDataSP()
 
     #
-    executeDeriveCustomerAddressFromOrderDataSP()
+    # executeDeriveCustomerAddressFromOrderDataSP()
+
+    #
+    # executeDeriveCouponsFromOrderDataSP()
+
+    #
+    # executeUpdateCouponIDOnOrderDataSP()
+
+    #
+    # executeDeriveDeliverTypeOrderDataSP()
+
+    # `proc_update_DeliverTypeID_on_OrderData`()
+    executeUpdateDeliverTypeIDOrderDataSP()
+
+    # Derive orders from orderdata
+    executeDeriveOrdersOrderDataSP()
+
+    # Update MarioOrderData with order ID
+    executeUpdateOrderIDonOrderDataSP()
+
+    # Update productID in marioorderdata with PizzaIDs : Duration: 8.8s
+    executeStoredProcedure('proc_update_ProductID_with_PizzaIDs_on_marioorderdata')
+
+    # Update productID in marioorderdata with NonPizzaIDs : Duration: 5,234s
+    executeStoredProcedure('proc_update_ProductID_with_NonPizzaIDs_on_marioorderdata')
+
+    # Update PizzaBottomID in marioorderdata with NonPizzaIDs : Duration: 5,234s
+    executeStoredProcedure('proc_update_ProductID_with_NonPizzaIDs_on_marioorderdata')
 
     # Final msg with total run time in seconds
     log('--- DONE import order data, took: {0:2f} seconds to run'.format(time.time() - start))
