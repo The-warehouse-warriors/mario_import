@@ -27,22 +27,34 @@ if __name__ == '__main__':
         
 
     log("Import Tax")
-    # os.system("python .\TaxImport\import_tax.py .//files/tax_import.csv")
+    os.system("python .\TaxImport\import_tax.py .//files/tax_import.csv")
     log("Done with Tax, view tax_log.txt")
 
     log("Import ingredients")
-    # os.system("python .\Ingredienten\import_ingredienten.py .//files/Extra_Ingredienten.csv")
+    os.system("python .\Ingredienten\import_ingredienten.py .//files/Extra_Ingredienten.csv")
     log("Done with ingredients, view ingredients_log.txt")
 
     log("Import shops")
-    # os.system("python .\shops\import_shops.py .//files/WinkelsMario.txt")
+    os.system("python .\shops\import_shops.py .//files/WinkelsMario.txt")
     log("Done with shops, view shops_log.txt")
 
     log("Import zipcodes")
-    # os.system("python .\zipcodes\import_zipcodes.py .//files/Postcode_tabel.mdb")
+    os.system("python .\zipcodes\import_zipcodes.py .//files/Postcode_tabel.mdb")
     log("Done with shops, view zipcode_log.txt")
 
+    log("Import PizzaBottoms")
+    os.system("python .\pizzabodems\ImportPizzaBottoms.py .//files")
+    log("Done with shops, view pizzabottoms.txt")
+
+    log("Import PizzaIngredients")
+    os.system("python .\Ingredienten\importPizzaIngredients.py .//files")
+    log("Done with shops, view PizzaIngredients.txt")
+
+    log("Import OtherProducts")
+    os.system("python .\otherproducts\ImportOtherProducts.py .//files")
+    log("Done with shops, view OtherProducts.txt")
+
     log("Import orders")
-    os.system("python .\orders\import_orders.py .//files/MarioOrderData01_10000.csv")
+    os.system("python .\orders\iImportAllOrderFiles.py .//files")
     log("Done with orders, view orders-log.txt")
 

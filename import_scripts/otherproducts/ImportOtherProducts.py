@@ -244,9 +244,23 @@ if __name__ == '__main__':
     log('Bulk insert csv file {} into table {}'.format(tempCsv, SQLMarioOrderDataTable))
     bulkImport()
 
-    #
-    # executeStoredProcedure()
+    # Derive categoryID in table mariooverigeproducten
+    executeStoredProcedure('proc_derive_Categories_From_MarioPizzaIngredienten')
 
+    # Update categoryID in table mariooverigeproducten
+    executeStoredProcedure('proc_update_CategoryID_mariooverigeproducten')
+
+    # Derive subcategoryID in table mariooverigeproducten
+    executeStoredProcedure('proc_derive_SubCategory_From_mariooverigeproducten')
+
+    # Update subcategoryID in table mariooverigeproducten
+    executeStoredProcedure('proc_update_subcategorieID_mariooverigeproducten')
+
+    # Derive Nonpizza products from mariooverigeproducten
+    executeStoredProcedure('proc_derive_Nonpizza_products_from_mariooverigeproducten')
+
+    # Update productID in table mariooverigeproducten
+    executeStoredProcedure('proc_update_productnaamID_from_mariooverigeproducten')
 
     # Final msg with total run time in seconds
     log('--- DONE import order data, took: {0:2f} seconds to run'.format(time.time() - start))
