@@ -14,12 +14,12 @@ import configparser
 start = time.time()
 extendedLogging = 0
 skipFirstRows = 4
-logFile = './logs/PizzaIngredients_log.txt'
-tempCsv = './temp/PizzaIngredients.csv'
+logFile = './logs/NonPizzaProducts.txt'
+tempCsv = './temp/NonPizzaProducts.csv'
 global df
 
 # Database vars
-SQLMarioOrderDataTable = "mariopizza_ingredienten"
+SQLMarioOrderDataTable = "mariooverigeproducten"
 
 
 # Return number of rows
@@ -58,7 +58,7 @@ def importFiles(folderPath):
     # Read all datafiles
     path = folderPath  # use your path
     log('Folderpath is: ' + folderPath)
-    all_files = glob.glob(path + "/pizza_ingredienten*.xlsx")
+    all_files = glob.glob(path + "/Overige producten*.xlsx")
     log('Number of files: ' + ', '.join(all_files))
 
     li = []
@@ -68,8 +68,8 @@ def importFiles(folderPath):
         tempdf = pd.read_excel(filename)
         log('File: {} has {} rows'.format(filename, printRowsOfDataFrame(tempdf)))
         li.append(tempdf)
-    df = pd.concat(li, axis=0, ignore_index=True)
-    log('Current columns are: {}'.format(df.columns))
+    dfOverigeproducten = pd.concat(li, axis=0, ignore_index=True)
+    log('Current columns are: {}'.format(dfOverigeproducten.columns))
 
     # Adding extra columns
     header_list = ['categorie', 'categorieUnique', 'categorieID',
@@ -77,48 +77,44 @@ def importFiles(folderPath):
                    'productnaam', 'productnaamUnique', 'productnaamID',
                    'productomschrijving', 'productomschrijvingFiltered',
                    'prijs', 'prijsDecimal',
-                   'bezorgtoeslag', 'bezorgtoeslagDecimal',
                    'spicy', 'spicyTrueFalse',
-                   'vegetarisch', 'vegetarischTrueFalse',
-                   'beschikbaar', 'beschikbaarTrueFalse',
-                   'aantalkeer_ingredient', 'ingredientnaam', 'ingredientnaamID',
-                   'pizzasaus_standaard', 'pizzasausID', 'ErrorDetails'
-                   ]
+                   'vegetarisch', 'vegetarischTrueFalse']
 
-    # Reindex columns
-    df = df.reindex(columns=header_list)
+    # Append extra columns
+    dfOverigeproducten = dfOverigeproducten.reindex(columns=header_list)
 
-    # Assign default values
-    df['categorieID'] = 0
-    df['subcategorieID'] = 0
-    df['productnaamID'] = 0
-    df['ingredientnaamID'] = 0
-    df['pizzasausID'] = 0
-    df['pizzasausID'] = 'text'
+    # Show all columnheaders
+    print(dfOverigeproducten.columns)
 
-    df['productomschrijvingFiltered'] = df['productomschrijving'].replace('\r', '', regex=True).replace('\n', '',
-                                                                                                        regex=True).replace(
-        '_x000D_', '', regex=True)
-    df['productomschrijving'] = df['productomschrijving'].replace('\r', '', regex=True).replace('\n', '',
-                                                                                                regex=True).replace(
-        '_x000D_', '', regex=True)
+    # Correct data to new columns
+    # dfOverigeproducten['prijs'] = dfOverigeproducten['prijs'].str.replace(',', '.')
+    # dfOverigeproducten['prijsDecimal'] = dfOverigeproducten['prijs'].str.extract('(\d*\.\d+|\d+)', expand=True).astype(float)
+
+    # Filter next lines characters
+    dfOverigeproducten['productomschrijvingFiltered'] = dfOverigeproducten['productomschrijving'].replace('\r', '',
+                                                                                                          regex=True).replace(
+        '\n', '', regex=True).replace('_x000D_', '', regex=True)
+    dfOverigeproducten['productomschrijving'] = dfOverigeproducten['productomschrijving'].replace('\r', '',
+                                                                                                  regex=True).replace(
+        '\n', '', regex=True).replace('_x000D_', '', regex=True)
 
     # Filter weird characters
-    df['categorieUnique'] = df['categorie'].replace('[\]\\[!@#$%.&*`’,~^_{}:;<>\'/\\|()-]+', '', regex=True).replace(
-        ' ', '', regex=True)
-    df['subcategorieUnique'] = df['subcategorie'].replace('[\]\\[!@#$%.&*`’,~^_{}:;<>\'/\\|()-]+', '',
-                                                          regex=True).replace(' ', '', regex=True)
-    df['productnaamUnique'] = df['productnaam'].replace('[\]\\[!@#$%.&*`’,~^_{}:;<>\'/\\|()-]+', '',
-                                                        regex=True).replace(' ', '', regex=True)
+    dfOverigeproducten['categorieUnique'] = dfOverigeproducten['categorie'].replace(
+        '[\]\\[!@#$%.&*`,~^_{}:;<>\'/\\|()-]+', '', regex=True).replace(' ', '', regex=True)
+    dfOverigeproducten['subcategorieUnique'] = dfOverigeproducten['subcategorie'].replace(
+        '[\]\\[!@#$%.&*`,~^_{}:;<>\'/\\|()-]+', '', regex=True).replace(' ', '', regex=True)
+    dfOverigeproducten['productnaamUnique'] = dfOverigeproducten['productnaam'].replace(
+        '[\]\\[!@#$%.&*`,~^_{}:;<>\'/\\|()-]+', '', regex=True).replace(' ', '', regex=True)
 
     # Set true(1) or false(0)
-    df['spicyTrueFalse'] = df['spicy'].apply(lambda x: 1 if x == 'Ja' else '0')
-    df['vegetarischTrueFalse'] = df['vegetarisch'].apply(lambda x: 1 if x == 'Ja' else '0')
-    df['beschikbaarTrueFalse'] = df['beschikbaar'].apply(lambda x: 1 if x == 'Ja' else '0')
-    log('Current columns are: {}'.format(df.columns))
+    dfOverigeproducten['spicyTrueFalse'] = dfOverigeproducten['spicy'].apply(lambda x: 1 if x == 'Ja' else '0')
+    dfOverigeproducten['vegetarischTrueFalse'] = dfOverigeproducten['vegetarisch'].apply(
+        lambda x: 1 if x == 'Ja' else '0')
+
+    log('Current columns are: {}'.format(dfOverigeproducten.columns))
 
     log('Exporting csv file, location: {}'.format(tempCsv))
-    df.to_csv(tempCsv, sep=';', encoding='utf-8', decimal=".", index_label='ID')
+    dfOverigeproducten.to_csv(tempCsv, sep=';', encoding='utf-8', decimal=".", index_label='ID')
 
 # Read config values from file into vars
 def setConfig():
@@ -142,11 +138,11 @@ def setConfig():
 def bulkImport():
     # Truncate MarioOrderData first
     try:
-        sql = "truncate mariopizza_ingredienten;"
+        sql = "truncate mariooverigeproducten;"
         mycursor = mydb.cursor()
         mycursor.execute(sql)
         mydb.commit()
-        log("Truncated mariopizza_ingredienten")
+        log("Truncated mariooverigeproducten")
     except Exception as err:
         log(err)
         # Stop process on error
@@ -247,33 +243,10 @@ if __name__ == '__main__':
     log('Truncating table')
     log('Bulk insert csv file {} into table {}'.format(tempCsv, SQLMarioOrderDataTable))
     bulkImport()
-    setErrorDetailsToNull()
 
-    # Derive Categories from proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_derive_Categories_From_MarioPizzaIngredienten')
+    #
+    # executeStoredProcedure()
 
-    # Update CategorieID in proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_update_CategoryID_On_MariosPizza_Ingredienten')
-
-    # Derive SubCategories in proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_derive_SubCategory_From_mariopizza_ingredienten')
-
-    # Update  in proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_update_SubcategoryID_On_mariopizza_ingredienten')
-
-    # Update  in proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_filter_MisMatch_Ingredients')
-
-    # Update  in proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_update_IngredientID_on_mariopizza_ingredienten')
-
-    # Update  in proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_update_SauceID_On_mariopizza_ingredienten')
-
-    # Update  in proc_derive_Categories_From_MarioPizzaIngredienten : Duration: s
-    executeStoredProcedure('proc_derive_Pizzas_From_mariopizza_ingredienten')
-
-    executeStoredProcedure('proc_derive_PizzaIngredients_From_mariopizza_ingredienten')
 
     # Final msg with total run time in seconds
     log('--- DONE import order data, took: {0:2f} seconds to run'.format(time.time() - start))
