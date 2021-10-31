@@ -7,7 +7,13 @@ BEGIN
     DECLARE _price decimal(7,3);
     DECLARE _available tinyint;
     DECLARE finished INTEGER DEFAULT 0;
-	DECLARE cur CURSOR FOR SELECT pb.ID, tmp.naam, tmp.diameter, tmp.omschrijving, tmp.toeslag, tmp.beschikbaar FROM temporarypizzabottoms AS tmp left join pizzabottom AS pb ON tmp.naam = pb.Name;
+	DECLARE cur CURSOR FOR SELECT pb.ID, 
+								  temporarypizzabottoms.naam, 
+                                  temporarypizzabottoms.diameter, 
+                                  temporarypizzabottoms.omschrijving, 
+                                  temporarypizzabottoms.toeslag, 
+                                  temporarypizzabottoms.beschikbaar 
+                                  FROM temporarypizzabottoms left join pizzabottom AS pb ON temporarypizzabottoms.naam = pb.Name;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = 1;
     
     OPEN cur;
@@ -20,25 +26,25 @@ BEGIN
         IF finished = 1 
 			THEN LEAVE getIdJoin;
         END IF;
-		IF  _ID = NULL
+		IF  _ID is NULL
 			THEN
-				CALL add_pizzabottom(_name, _size, _description, _price, _available);
+				CALL proc_add_pizzabottom(_name, _size, _description, _price, _available);
 		ELSE 
 			BEGIN
 				CALL proc_return_pizzabottom_values(_ID, @name, @size, @description, @price, @active);
-				IF _size != @size
+				IF _size <> @size
 					THEN 
 						UPDATE pizzabottom SET Size = _size,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
-                IF _description != @description
+                IF _description <> @description
 					THEN 
 						UPDATE pizzabottom SET Description = _description,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
-				IF _price != @price
+				IF _price <> @price
 					THEN 
 						UPDATE pizzabottom SET Price = _price,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
-				IF _available != @active
+				IF _available <> @active
 					THEN 
 						UPDATE pizzabottom SET Available = _available,  LastUpdated = CURRENT_TIMESTAMP, UpdatedBy = 'System' where ID = _ID;
 				END IF;
