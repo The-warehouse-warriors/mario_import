@@ -54,3 +54,9 @@ Install PyMySQL
 
 ### Stored procedure
 Add the `ImportZipcodes_SP.sql` to MySql
+
+## Orders
+### Dependencies
+Install openpyxl:
+
+`python -m pip install openpyxl`
