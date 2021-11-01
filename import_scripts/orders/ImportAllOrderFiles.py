@@ -182,7 +182,7 @@ def bulkImport():
         # Connection uri
         # Replace data
         # Create no indexes
-        dfCSV.to_sql(SQLMarioOrderDataTable, con=SQLUri, if_exists='replace', index=False)
+        dfCSV.to_sql(SQLMarioOrderDataTable, con=SQLUri, if_exists='append', index=False)
     except Exception as err:
         log(err)
         # Stop process on error

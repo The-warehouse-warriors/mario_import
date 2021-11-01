@@ -55,6 +55,5 @@ if __name__ == '__main__':
     log("Done with shops, view OtherProducts.txt")
 
     log("Import orders")
-    os.system("python .\orders\iImportAllOrderFiles.py .//files")
+    os.system("python .\orders\ImportAllOrderFiles.py .//files")
     log("Done with orders, view orders-log.txt")
-
