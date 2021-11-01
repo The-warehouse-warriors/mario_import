@@ -18,22 +18,20 @@ SQLCityTable = "city"
 SQLMunicipalityTable = "municipality"
 SQLtempZipcodeTable = 'tempzipcodes'
 
-
-
 # Create connector for later use
 def createDbConnector():
-    try:
+
+    try:   
         global mydb
         mydb = mysql.connector.connect(
-            host=dbHost,
-            user=dbUser,
-            password=dbPassword,
-            database=dbTable
+            host = dbHost,
+            user = dbUser,
+            password = dbPassword,
+            database = dbTable
         )
     except:
         log("!! MySQL error !!")
         exit()
-
 
 # Import given file into database
 def importFile(filename):
@@ -87,7 +85,6 @@ def handleMunicipality(filename):
     except pyodbc.Error:
         log("!! ERROR: Cant find/open Access file")
 
-
 # Insert into SQL DB
 def addMunicipality(id, name):
     dtNow = datetime.now()
@@ -107,7 +104,6 @@ def addMunicipality(id, name):
         mydb.commit()
     except pyodbc.Error as e:
         log(e)
-
 
 # check if m unicipality exists
 def checkMunicipalityExists(id, name):
@@ -131,7 +127,6 @@ def checkMunicipalityExists(id, name):
         log(e)
     return False
 
-
 # Zipcode Table
 def handleZipcodes(filename):
     log("Handle zipcodes")
@@ -144,7 +139,6 @@ def handleZipcodes(filename):
 
     # And calling SP
     executeZipcodeSP()
-
 
 def createTempZipcodeCsv(filename):
     log("Create Zipcodes temp file")
@@ -175,38 +169,20 @@ def createTempZipcodeCsv(filename):
             city = str(row[4])
             street = str(row[5])
             municipalityId = row[6]
-
+                
             # Create row and add to file
             data = [zipcode, breakpointStart, breakpointEnd, city, street, municipalityId, '', '']
             writer.writerow(data)
 
-
         # Done with CSV creating
-        f.close()
+        f.close()      
         conn.close()
-
-        log("- " + str(i))
-
-        # Call SP to insert
-        addZipcode(
-                zipcode,
-                breakpointStart,
-                breakpointEnd,
-                city,
-                street,
-                municipalityId
-            )
-
-        log("Handled items : " + str(i))
-        log("Done import Municipality\n")
-
 
         log("Added " + str(i) + " rows to temp file")
     except pyodbc.Error:
         log("!! ERROR: Cant find/open Access file")
     except Exception as err:
         log(err)
-
 
 def bulkImport():
     # Truncate tempzipcodes first
@@ -219,15 +195,15 @@ def bulkImport():
     except Exception as err:
         log(err)
         # Stop process on error
-        return
-
+        return 
+    
     try:
         # Create connection
         SQLUri = 'mysql+pymysql://%s:%s@%s/%s' % (dbUser, dbPassword, dbHost, dbTable)
 
         # Import csv to sql with pandas
         df = pd.read_csv(tempCsv)
-
+        
         # Table name
         # Connection uri
         # Replace data 
@@ -240,8 +216,7 @@ def bulkImport():
 
     log("Done with CSV import")
 
-
-# Execute the stored procedure
+# Execute the stored procedure 
 # to handle the imported temp zipcodes
 def executeZipcodeSP():
     try:
@@ -256,9 +231,8 @@ def executeZipcodeSP():
         log(err)
         return
 
-
 # Log text to file
-def log(text):
+def log(text):    
     print(text)
 
     # Create a row in txt file with Datetime as prefix
@@ -267,7 +241,9 @@ def log(text):
         logger.write(str(dtnow) + ') ' + str(text) + '\n')
 
 
-def setConfig():
+# Read config values from file into vars
+def setConfig():  
+
     # Read from config.ini
     config = configparser.ConfigParser()
     config.read('config.ini')
@@ -284,21 +260,14 @@ def setConfig():
     dbUser = config.get('Database', 'dbUser')
     dbPassword = config.get('Database', 'dbPassword')
 
-
 # Main function, called on start
 if __name__ == '__main__':
     log("--- START import zipcode ---")
 
     setConfig()
 
-
     # Set start time
     start = time.time()
-
-
-if __name__ == '__main__':
-    log("--- Start importer ---")
-
 
     # Check/create Mysql connector
     createDbConnector()
@@ -308,15 +277,9 @@ if __name__ == '__main__':
         log("!! Missing argument !!")
         exit()
 
-
     # Select first param, and call main function
-    filename = sys.argv[1]
+    filename = sys.argv[1]    
     importFile(filename)
 
     # Final msg with total run time in seconds
     log('--- DONE import zipcode, took: {0:2f} seconds to run'.format(time.time() - start))
-
-    filename = sys.argv[1]
-    importFile(filename)
-
-
